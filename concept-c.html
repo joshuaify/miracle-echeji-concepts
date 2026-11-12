@@ -98,6 +98,9 @@
     background:linear-gradient(165deg,rgba(230,169,112,.20),rgba(43,27,19,.32) 55%,rgba(18,11,8,.62));
     mix-blend-mode:multiply}
   .frame{border-radius:22px}
+  /* A real photograph of her is never graded or tinted. Only stand-ins are. */
+  .ph.real::before,.ph.real::after{display:none}
+  .ph.real img{filter:none}
   figcaption{margin-top:12px}
 
   /* nav */
@@ -420,7 +423,7 @@
       <h2 class="d rv">On screen</h2>
       <div class="sec-body">
         <div class="looks rv">
-          <figure><span class="ph frame"><img src="assets/look-commercial.jpg" alt="Stand-in headshot."></span><figcaption class="w">Commercial</figcaption></figure>
+          <figure><span class="ph real frame"><img src="assets/still-compliance.jpg" alt="Miracle Echeji in character in Compliance." style="object-position:50% 12%"></span><figcaption class="w">Compliance &middot; real still</figcaption></figure>
           <figure><span class="ph frame"><img src="assets/look-warm.jpg" alt="Stand-in headshot."></span><figcaption class="w">Warm</figcaption></figure>
           <figure><span class="ph frame"><img src="assets/look-presenter.jpg" alt="Stand-in headshot."></span><figcaption class="w">Presenter</figcaption></figure>
           <figure><span class="ph frame"><img src="assets/look-character.jpg" alt="Stand-in headshot."></span><figcaption class="w">Character</figcaption></figure>
