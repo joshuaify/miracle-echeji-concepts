@@ -1,0 +1,533 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<meta name="claude:viewport-fit-sides" content="cover">
+<title>Miracle Echeji Title Sequence</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=DM+Mono:wght@400;500&display=swap">
+<style>
+  /* Layout concept: the homepage as a film title card. A cinemascope showreel frame opens the
+     page, then a clapperboard-style profile slate, a poster rail and a stills viewer.
+     Teal-and-amber film grade: teal-black ground, cool white type, one amber accent.
+     Shape rule: pill buttons, 6px frames and panels. */
+  :root{
+    --ink:#040C10;
+    --deep:#08161C;
+    --panel:#0D222B;
+    --teal:#1F5565;
+    --fg:#E9F1F2;
+    --muted:#8DA5AC;
+    --amber:#F7964A;
+    --amber-hi:#FFB877;
+    --line:rgba(200,230,238,.14);
+    --display:"Archivo","Helvetica Neue",Arial,sans-serif;
+    --mono:"DM Mono",ui-monospace,"SF Mono",Menlo,monospace;
+    --maxw:1280px;
+    --r:6px;
+    color-scheme:dark;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0; background:var(--ink); color:var(--fg); font-family:var(--display); font-size:1rem; line-height:1.6;
+    -webkit-font-smoothing:antialiased; overflow-x:hidden}
+  body::before{content:""; position:fixed; inset:0 0 auto; height:env(safe-area-inset-top,0px); z-index:50; background:var(--ink)}
+  .wrap{width:100%; max-width:var(--maxw); margin-inline:auto;
+    padding-left:max(20px,env(safe-area-inset-left,0px)); padding-right:max(20px,env(safe-area-inset-right,0px))}
+  a{color:inherit; text-decoration:none}
+  h1,h2,h3,p,figure,dl,dd,ol{margin:0}
+  ol{padding:0}
+  :focus-visible{outline:2px solid var(--amber); outline-offset:3px}
+  section{scroll-margin-top:72px}
+
+  /* display type: expanded heavy caps, as on a title card */
+  .x{font-family:var(--display); font-stretch:125%; font-weight:800; text-transform:uppercase; line-height:.95; letter-spacing:-.012em; overflow-wrap:anywhere}
+  .m{font-family:var(--mono); font-size:.72rem; letter-spacing:.12em; text-transform:uppercase; color:var(--muted)}
+
+  .chip{margin:0; padding-block:9px; text-align:center; font-family:var(--mono); font-size:.66rem; letter-spacing:.1em; text-transform:uppercase; color:var(--amber-hi); background:var(--deep); border-bottom:1px solid var(--line)}
+
+  /* nav */
+  .nav{position:sticky; top:env(safe-area-inset-top,0px); z-index:40; background:rgba(4,12,16,.88);
+    backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px); border-bottom:1px solid var(--line)}
+  .nav-in{display:flex; align-items:center; justify-content:space-between; gap:16px; height:64px}
+  .brand{font-size:.92rem; letter-spacing:.02em; white-space:nowrap}
+  .links{display:flex; gap:30px}
+  .links a{transition:color .2s}
+  .links a:hover{color:var(--fg)}
+  @media(max-width:900px){.links{display:none}}
+
+  /* buttons: pills */
+  .btn{display:inline-flex; align-items:center; justify-content:center; gap:10px; white-space:nowrap; cursor:pointer;
+    font-family:var(--mono); font-weight:500; font-size:.76rem; letter-spacing:.1em; text-transform:uppercase;
+    padding:14px 24px; border-radius:999px; border:1px solid transparent; transition:background .2s,border-color .2s,color .2s,transform .12s}
+  .btn:active{transform:scale(.98)}
+  .btn-amber{background:var(--amber); color:var(--ink)}
+  .btn-amber:hover{background:var(--amber-hi)}
+  .btn-line{background:transparent; color:var(--fg); border-color:rgba(233,241,242,.4)}
+  .btn-line:hover{border-color:var(--amber); color:var(--amber-hi)}
+  .nav .btn{padding:10px 18px}
+
+  /* graded placeholder stills */
+  .still{position:relative; overflow:hidden; border-radius:var(--r); background-color:var(--deep)}
+  .still::after{content:""; position:absolute; inset:0; opacity:.5; mix-blend-mode:overlay; pointer-events:none;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='110' height='110'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.1' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+  .g1{background-image:radial-gradient(60% 85% at 76% 38%,rgba(247,150,74,.58),transparent 66%),radial-gradient(70% 80% at 24% 72%,rgba(31,85,101,.95),transparent 72%)}
+  .g2{background-image:radial-gradient(55% 70% at 28% 30%,rgba(247,150,74,.5),transparent 64%),radial-gradient(80% 80% at 80% 80%,rgba(31,85,101,.9),transparent 70%)}
+  .g3{background-image:radial-gradient(70% 60% at 50% 100%,rgba(247,150,74,.46),transparent 66%),radial-gradient(90% 70% at 50% 0%,rgba(31,85,101,.85),transparent 72%)}
+  .g4{background-image:radial-gradient(45% 80% at 92% 60%,rgba(255,184,119,.5),transparent 62%),radial-gradient(80% 90% at 10% 30%,rgba(20,62,76,.95),transparent 72%)}
+  .g5{background-image:radial-gradient(60% 60% at 40% 46%,rgba(247,150,74,.4),transparent 60%),radial-gradient(100% 100% at 100% 0%,rgba(31,85,101,.8),transparent 70%)}
+  .g6{background-image:radial-gradient(50% 90% at 12% 50%,rgba(247,150,74,.5),transparent 62%),radial-gradient(70% 90% at 88% 50%,rgba(31,85,101,.9),transparent 70%)}
+  .still img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:0;
+    filter:grayscale(1) sepia(.3) hue-rotate(155deg) saturate(1.6) contrast(1.05) brightness(.86)}
+  .still::after{z-index:2}
+  .still .ytframe{position:absolute; inset:0; width:100%; height:100%; border:0; z-index:6}
+  .social{display:inline-flex; flex-wrap:wrap; align-items:center; gap:10px}
+  .social a{width:44px; height:44px; border-radius:999px; border:1px solid var(--line); display:grid; place-items:center; color:var(--fg); transition:background .2s,color .2s,border-color .2s}
+  .social a:hover{background:var(--amber); color:var(--ink); border-color:var(--amber)}
+  .social svg{width:18px; height:18px; fill:currentColor}
+  .social a.txt{width:auto; padding:0 16px; font:500 .72rem var(--mono); letter-spacing:.1em; text-transform:uppercase}
+  figcaption,.cap{margin-top:10px; font-size:.8rem; color:var(--muted)}
+
+  /* hero: cinemascope frame */
+  .hero{padding-block:clamp(14px,2vw,24px) clamp(44px,6vw,80px)}
+  .scope{aspect-ratio:2.39/1}
+  .scope .glow{position:absolute; width:46%; aspect-ratio:1; right:8%; top:-10%; border-radius:50%; filter:blur(60px); background:rgba(247,150,74,.34)}
+  .scope .shade{position:absolute; inset:0; background:linear-gradient(98deg,rgba(4,12,16,.86) 0%,rgba(4,12,16,.3) 52%,transparent 78%)}
+  .over{position:absolute; inset:0; z-index:2; display:grid; grid-template-rows:auto 1fr auto; padding:clamp(16px,2.8vw,38px)}
+  .over-top{display:flex; justify-content:space-between; gap:12px}
+  .over-top .m{color:rgba(233,241,242,.78)}
+  #tc{font-variant-numeric:tabular-nums}
+  .over-bot{grid-row:3; display:flex; align-items:flex-end; justify-content:space-between; gap:18px 28px; flex-wrap:wrap}
+  .title{font-size:clamp(2.5rem,10.4vw,8rem); line-height:.9}
+  .title span{display:block}
+  .play{display:inline-flex; align-items:center; gap:14px; background:none; border:0; padding:0; cursor:pointer; color:var(--fg)}
+  .play .disc{width:clamp(52px,6vw,74px); height:clamp(52px,6vw,74px); border-radius:50%; background:var(--amber); display:grid; place-items:center; transition:transform .25s,background .25s}
+  .play .disc i{display:block; width:0; height:0; border-style:solid; border-width:9px 0 9px 15px; border-color:transparent transparent transparent var(--ink); margin-left:4px}
+  .play:hover .disc{transform:scale(1.08); background:var(--amber-hi)}
+  .play .m{color:var(--fg)}
+  .hero-row{display:grid; grid-template-columns:minmax(0,1fr) auto; gap:20px 40px; align-items:center; margin-top:clamp(20px,2.6vw,32px)}
+  .logline{max-width:46ch; font-size:clamp(1.08rem,1.8vw,1.4rem); line-height:1.45}
+  .hero-cta{display:flex; flex-wrap:wrap; gap:12px}
+  @media(max-width:760px){
+    .scope{aspect-ratio:4/5}
+    .scope .shade{background:linear-gradient(180deg,rgba(4,12,16,.5) 0%,transparent 34%,rgba(4,12,16,.88) 100%)}
+    .hero-row{grid-template-columns:1fr}
+  }
+
+  /* sections */
+  .sec{padding-block:clamp(64px,9vw,128px)}
+  .sec + .sec{border-top:1px solid var(--line)}
+  .sec h2{font-size:clamp(1.6rem,4.6vw,3.4rem)}
+  .sec-lead{margin-top:14px; max-width:56ch; color:var(--muted); font-size:1.04rem}
+  .sec-body{margin-top:clamp(30px,4.4vw,54px)}
+  .tbc{color:var(--muted); font-style:italic; font-weight:400}
+  .draft{margin-top:22px; font-size:.82rem; color:var(--muted); font-style:italic}
+
+  /* profile + slate */
+  .profile{display:grid; grid-template-columns:1.05fr .95fr; gap:clamp(32px,6vw,90px); align-items:center}
+  .prose p{max-width:54ch; font-size:clamp(1.1rem,1.7vw,1.3rem); line-height:1.6}
+  .prose p + p{margin-top:18px; color:var(--muted)}
+  .slate{background:var(--panel); border:1px solid var(--line); border-radius:var(--r); overflow:hidden; transform:rotate(-1.2deg); box-shadow:0 30px 60px -30px rgba(0,0,0,.8)}
+  .sticks{height:28px; background:repeating-linear-gradient(-55deg,var(--fg) 0 26px,var(--ink) 26px 52px)}
+  .slate dl{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:1px; background:var(--line); border-top:1px solid var(--line)}
+  .slate dl > div{background:var(--panel); padding:16px 20px}
+  .slate dd{margin-top:4px; font-weight:600; font-size:1.12rem; line-height:1.3}
+  @media(max-width:900px){.profile{grid-template-columns:1fr}}
+
+  /* poster rail */
+  .rail{display:grid; grid-auto-flow:column; grid-auto-columns:minmax(232px,1fr); gap:16px; overflow-x:auto; padding-block:10px 16px;
+    scroll-snap-type:x proximity; scrollbar-width:thin; scrollbar-color:var(--teal) transparent}
+  .poster{scroll-snap-align:start; aspect-ratio:2/3; display:flex; flex-direction:column; justify-content:space-between; padding:20px;
+    border:1px solid var(--line); transition:transform .35s cubic-bezier(.16,1,.3,1),border-color .3s}
+  .poster:hover{transform:translateY(-6px); border-color:var(--amber)}
+  .poster > *{position:relative; z-index:1}
+  .poster .m{color:rgba(233,241,242,.8)}
+  .poster h3{font-size:clamp(1.2rem,1.9vw,1.6rem)}
+  .poster p{margin-top:10px; font-family:var(--mono); font-size:.8rem; color:var(--amber-hi)}
+  .actions{display:flex; flex-wrap:wrap; gap:12px; margin-top:28px}
+
+  /* stills viewer */
+  .viewer{display:grid; grid-template-columns:1.2fr .8fr; gap:clamp(14px,2vw,24px); align-items:start}
+  .stage .still{aspect-ratio:5/4}
+  .thumbs{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px}
+  .thumbs button{aspect-ratio:3/2; border:0; padding:0; cursor:pointer; opacity:.62; transition:opacity .2s}
+  .thumbs button:hover{opacity:.9}
+  .thumbs button[aria-pressed="true"]{opacity:1; outline:2px solid var(--amber); outline-offset:3px}
+  @media(max-width:760px){
+    .viewer{grid-template-columns:1fr}
+    .stage .still{aspect-ratio:4/5}
+    .thumbs{grid-template-columns:repeat(3,minmax(0,1fr))}
+    .thumbs button{aspect-ratio:1}
+  }
+
+  /* press */
+  .pr{display:grid; grid-template-columns:1.25fr .75fr; gap:clamp(28px,5vw,72px); align-items:start}
+  .qcard{background:var(--panel); border:1px solid var(--line); border-radius:var(--r); padding:clamp(24px,4vw,52px)}
+  .qcard blockquote{margin:0; font-weight:500; font-size:clamp(1.7rem,4.2vw,3.1rem); line-height:1.12; letter-spacing:-.01em; text-wrap:balance}
+  .qcard blockquote span{color:var(--amber)}
+  .qcard cite{display:block; margin-top:22px; font-style:normal}
+  .qcard a{display:inline-block; margin-top:22px; font-family:var(--mono); font-size:.8rem; letter-spacing:.06em; color:var(--amber-hi); border-bottom:1px solid var(--amber); padding-bottom:3px}
+  .slot{height:60px; border:1px dashed rgba(233,241,242,.26); border-radius:var(--r); display:grid; align-items:center; padding-inline:16px; margin-top:10px}
+  @media(max-width:900px){.pr{grid-template-columns:1fr}}
+
+  /* partnerships */
+  .tiers{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:16px}
+  .tier{border-top:2px solid var(--fg); padding-top:16px}
+  .tier h3{font-weight:700; font-size:1.3rem}
+  .tier .slots{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px; margin-top:6px}
+  .tier .slot{justify-items:center}
+  @media(max-width:760px){.tiers{grid-template-columns:1fr; gap:30px}}
+
+  /* career track */
+  .track{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); list-style:none; border-top:2px solid var(--line)}
+  .track li{position:relative; padding:26px 24px 0 0}
+  .track li::before{content:""; position:absolute; top:-2px; left:0; height:2px; width:100%; background:var(--amber); transform-origin:left}
+  .track li:last-child::before{width:34%}
+  .track li::after{content:""; position:absolute; top:-7px; left:0; width:12px; height:12px; background:var(--amber); border-radius:50%}
+  .track h3{font-size:clamp(1.15rem,2.2vw,1.7rem)}
+  .track p{margin-top:10px; color:var(--muted); max-width:34ch}
+  @media(max-width:760px){
+    .track{grid-template-columns:1fr; border-top:0; border-left:2px solid var(--line)}
+    .track li{padding:0 0 30px 24px}
+    .track li::before{top:0; left:-2px; width:2px; height:100%}
+    .track li:last-child::before{width:2px; height:34%}
+    .track li::after{top:2px; left:-7px}
+  }
+
+  /* booking */
+  .book{background:var(--panel); border:1px solid var(--line); border-radius:var(--r); padding:clamp(22px,4.4vw,60px);
+    display:grid; grid-template-columns:1fr 1fr; gap:clamp(30px,5vw,72px); align-items:start}
+  .book h2{font-size:clamp(1.6rem,4.4vw,3.2rem)}
+  .mail{display:flex; flex-wrap:wrap; align-items:center; gap:12px; margin-top:26px}
+  .mail code{font-family:var(--mono); font-size:clamp(.98rem,1.7vw,1.2rem); color:var(--amber-hi); user-select:all; overflow-wrap:anywhere; min-width:0}
+  .copy{font-family:var(--mono); font-size:.7rem; letter-spacing:.1em; text-transform:uppercase; color:var(--fg); background:transparent; border:1px solid rgba(233,241,242,.4); border-radius:999px; padding:7px 14px; cursor:pointer}
+  .copy:hover{border-color:var(--amber)}
+  .book dl{margin-top:28px; display:grid; gap:20px}
+  .book dd{margin-top:4px; max-width:44ch}
+  form{display:grid; gap:16px}
+  .field{display:grid; gap:8px}
+  .field input,.field select,.field textarea{width:100%; font:400 1rem var(--display); color:var(--fg); background:var(--ink);
+    border:1px solid rgba(233,241,242,.26); border-radius:var(--r); padding:13px 14px}
+  .field textarea{min-height:124px; resize:vertical}
+  .field input:focus,.field select:focus,.field textarea:focus{outline:none; border-color:var(--amber)}
+  .form-note{min-height:1.4em; font-size:.9rem; color:var(--amber-hi)}
+  @media(max-width:900px){.book{grid-template-columns:1fr}}
+
+  /* footer */
+  footer{border-top:1px solid var(--line); padding-block:clamp(36px,5vw,64px)}
+  .foot{display:flex; flex-wrap:wrap; justify-content:space-between; align-items:flex-end; gap:22px 40px}
+  .foot-name{font-size:clamp(1.5rem,4vw,2.8rem)}
+  .foot nav{display:flex; flex-wrap:wrap; gap:10px 24px}
+  .foot nav a:hover{color:var(--amber-hi)}
+  .fine{margin-top:26px; font-size:.78rem; color:var(--muted)}
+
+  .toast{position:fixed; z-index:71; left:50%; bottom:calc(22px + env(safe-area-inset-bottom,0px)); transform:translate(-50%,12px); opacity:0; pointer-events:none;
+    width:max-content; max-width:min(88vw,460px); background:var(--fg); color:var(--ink); border-radius:var(--r); padding:12px 16px; font-size:.9rem; transition:opacity .25s,transform .25s}
+  .toast.on{opacity:1; transform:translate(-50%,0)}
+
+  /* motion */
+  .rv.pre{opacity:0; transform:translateY(24px)}
+  .rv.in{opacity:1; transform:none; transition:opacity .7s ease,transform .7s cubic-bezier(.16,1,.3,1)}
+  @media(prefers-reduced-motion:no-preference){
+    .scope{animation:open 1s cubic-bezier(.7,0,.2,1) both}
+    .title span{animation:settle .9s .55s cubic-bezier(.16,1,.3,1) both}
+    .title span + span{animation-delay:.68s}
+    .play,.over-top{animation:fade .8s .95s ease both}
+    .scope .glow{animation:drift 16s ease-in-out infinite alternate}
+    @keyframes open{from{clip-path:inset(46% 0 46% 0)} to{clip-path:inset(0 0 0 0)}}
+    @keyframes settle{from{opacity:0; transform:translateY(32px)}}
+    @keyframes fade{from{opacity:0}}
+    @keyframes drift{to{transform:translate(-38%,24%)}}
+  }
+  @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto} .rv.pre{opacity:1; transform:none}}
+</style>
+</head>
+<body>
+<p class="chip"><span class="wrap" style="display:block">Design concept B. Placeholder images and draft copy, for review.</span></p>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+<symbol id="i-ig" viewBox="0 0 24 24"><path d="M7.0301.084c-1.2768.0602-2.1487.264-2.911.5634-.7888.3075-1.4575.72-2.1228 1.3877-.6652.6677-1.075 1.3368-1.3802 2.127-.2954.7638-.4956 1.6365-.552 2.914-.0564 1.2775-.0689 1.6882-.0626 4.947.0062 3.2586.0206 3.6671.0825 4.9473.061 1.2765.264 2.1482.5635 2.9107.308.7889.72 1.4573 1.388 2.1228.6679.6655 1.3365 1.0743 2.1285 1.38.7632.295 1.6361.4961 2.9134.552 1.2773.056 1.6884.069 4.9462.0627 3.2578-.0062 3.668-.0207 4.9478-.0814 1.28-.0607 2.147-.2652 2.9098-.5633.7889-.3086 1.4578-.72 2.1228-1.3881.665-.6682 1.0745-1.3378 1.3795-2.1284.2957-.7632.4966-1.636.552-2.9124.056-1.2809.0692-1.6898.063-4.948-.0063-3.2583-.021-3.6668-.0817-4.9465-.0607-1.2797-.264-2.1487-.5633-2.9117-.3084-.7889-.72-1.4568-1.3876-2.1228C21.2982 1.33 20.628.9208 19.8378.6165 19.074.321 18.2017.1197 16.9244.0645 15.6471.0093 15.236-.005 11.977.0014 8.718.0076 8.31.0215 7.0301.0839m.1402 21.6932c-1.17-.0509-1.8053-.2453-2.2287-.408-.5606-.216-.96-.4771-1.3819-.895-.422-.4178-.6811-.8186-.9-1.378-.1644-.4234-.3624-1.058-.4171-2.228-.0595-1.2645-.072-1.6442-.079-4.848-.007-3.2037.0053-3.583.0607-4.848.05-1.169.2456-1.805.408-2.2282.216-.5613.4762-.96.895-1.3816.4188-.4217.8184-.6814 1.3783-.9003.423-.1651 1.0575-.3614 2.227-.4171 1.2655-.06 1.6447-.072 4.848-.079 3.2033-.007 3.5835.005 4.8495.0608 1.169.0508 1.8053.2445 2.228.408.5608.216.96.4754 1.3816.895.4217.4194.6816.8176.9005 1.3787.1653.4217.3617 1.056.4169 2.2263.0602 1.2655.0739 1.645.0796 4.848.0058 3.203-.0055 3.5834-.061 4.848-.051 1.17-.245 1.8055-.408 2.2294-.216.5604-.4763.96-.8954 1.3814-.419.4215-.8181.6811-1.3783.9-.4224.1649-1.0577.3617-2.2262.4174-1.2656.0595-1.6448.072-4.8493.079-3.2045.007-3.5825-.006-4.848-.0608M16.953 5.5864A1.44 1.44 0 1 0 18.39 4.144a1.44 1.44 0 0 0-1.437 1.4424M5.8385 12.012c.0067 3.4032 2.7706 6.1557 6.173 6.1493 3.4026-.0065 6.157-2.7701 6.1506-6.1733-.0065-3.4032-2.771-6.1565-6.174-6.1498-3.403.0067-6.156 2.771-6.1496 6.1738M8 12.0077a4 4 0 1 1 4.008 3.9921A3.9996 3.9996 0 0 1 8 12.0077"/></symbol>
+<symbol id="i-yt" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></symbol>
+<symbol id="i-fb" viewBox="0 0 24 24"><path d="M9.101 23.691v-7.98H6.627v-3.667h2.474v-1.58c0-4.085 1.848-5.978 5.858-5.978.401 0 .955.042 1.468.103a8.68 8.68 0 0 1 1.141.195v3.325a8.623 8.623 0 0 0-.653-.036 26.805 26.805 0 0 0-.733-.009c-.707 0-1.259.096-1.675.309a1.686 1.686 0 0 0-.679.622c-.258.42-.374.995-.374 1.752v1.297h3.919l-.386 2.103-.287 1.564h-3.246v8.245C19.396 23.238 24 18.179 24 12.044c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.628 3.874 10.35 9.101 11.647Z"/></symbol>
+</svg>
+<header class="nav">
+  <div class="wrap nav-in">
+    <a class="brand x" href="#top">Miracle Echeji</a>
+    <nav class="links" aria-label="Sections">
+      <a class="m" href="#profile">Profile</a>
+      <a class="m" href="#screen">On screen</a>
+      <a class="m" href="#stills">Stills</a>
+      <a class="m" href="#press">Press</a>
+      <a class="m" href="#career">Career</a>
+    </nav>
+    <a class="btn btn-amber" href="#booking">Booking</a>
+  </div>
+</header>
+
+<main id="top">
+
+  <section class="hero">
+    <div class="wrap">
+      <div class="scope still g1" id="scope"><img src="assets/hero.jpg" alt="Stand-in photograph">
+        <div class="glow" aria-hidden="true"></div>
+        <div class="shade" aria-hidden="true"></div>
+        <div class="over">
+          <div class="over-top">
+            <span class="m">Showreel</span>
+            <span class="m" id="tc" aria-hidden="true">00:00:00:00</span>
+          </div>
+          <div class="over-bot">
+            <h1 class="title x"><span>Miracle</span><span>Echeji</span></h1>
+            <button class="play" type="button" data-yt="T1VItagIymk" aria-label="Play: The Truth Podcast">
+              <span class="disc"><i></i></span><span class="m">Play reel</span>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="hero-row">
+        <p class="logline">Nollywood actress and broadcaster. Audiences know her as Mimi of Lagos.</p>
+        <div class="hero-cta">
+          <a class="btn btn-amber" href="#booking">Booking &amp; inquiries</a>
+          <button class="btn btn-line" type="button" data-note="On the live site this downloads her résumé as a PDF.">Résumé (PDF)</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="profile">
+    <div class="wrap">
+      <h2 class="x">Profile</h2>
+      <div class="sec-body profile rv">
+        <div>
+          <div class="prose">
+            <p>Miracle Echeji is a Nollywood actress and broadcaster, known to audiences as Mimi of Lagos. She comes from Mbaise in Imo State and built her presenting skills in broadcasting before she moved to the screen.</p>
+            <p>On film she appears in Someone Like You, Just A Friend and Compliance. In Once Upon A Village she plays Ozege.</p>
+          </div>
+          <p class="draft">Draft copy from public sources. Miracle's approved biography replaces it.</p>
+        </div>
+        <div class="slate">
+          <div class="sticks" aria-hidden="true"></div>
+          <dl>
+            <div><dt class="m">Name</dt><dd>Miracle Echeji</dd></div>
+            <div><dt class="m">Also known as</dt><dd>Mimi of Lagos</dd></div>
+            <div><dt class="m">Trade</dt><dd>Actress, broadcaster</dd></div>
+            <div><dt class="m">Base</dt><dd>Lagos, Nigeria</dd></div>
+            <div><dt class="m">Origin</dt><dd>Mbaise, Imo State</dd></div>
+            <div><dt class="m">Representation</dt><dd class="tbc">To confirm</dd></div>
+          </dl>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="screen">
+    <div class="wrap">
+      <h2 class="x">On screen</h2>
+      <p class="sec-lead">Real posters replace these cards. Swipe the row on a phone.</p>
+      <div class="sec-body rv">
+        <div class="rail">
+          <article class="poster still"><img src="assets/look-character.jpg" alt=""><span class="m">Screen</span><div><h3 class="x">Once Upon A Village</h3><p>as Ozege</p></div></article>
+          <article class="poster still"><img src="assets/look-warm.jpg" alt=""><span class="m">Film</span><div><h3 class="x">Just A Friend</h3><p>with Maurice Sam</p></div></article>
+          <article class="poster still"><img src="assets/look-commercial.jpg" alt=""><span class="m">Film</span><div><h3 class="x">Compliance</h3><p>with Van Vicker</p></div></article>
+          <article class="poster still"><img src="assets/look-presenter.jpg" alt=""><span class="m">Film</span><div><h3 class="x">Someone Like You</h3><p>role to confirm</p></div></article>
+        </div>
+        <div class="actions">
+          <a class="btn btn-line" href="https://nollywire.com/names/miracle-echeji" target="_blank" rel="noopener">Her profile on Nollywire</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="stills">
+    <div class="wrap">
+      <h2 class="x">Stills</h2>
+      <p class="sec-lead">Six images at most. Pick one on the right to see it large.</p>
+      <div class="sec-body viewer rv">
+        <figure class="stage">
+          <div class="still" id="stage" role="img" aria-label="Stand-in photograph"><img id="stageImg" src="assets/look-commercial.jpg" alt=""></div>
+          <figcaption id="stageCap">Headshot, commercial look</figcaption>
+        </figure>
+        <div class="thumbs" role="group" aria-label="Choose an image">
+          <button class="still" type="button" aria-pressed="true" data-img="assets/look-commercial.jpg" data-cap="Headshot, commercial look" aria-label="Headshot, commercial look"><img src="assets/look-commercial.jpg" alt=""></button>
+          <button class="still" type="button" aria-pressed="false" data-img="assets/look-warm.jpg" data-cap="Headshot, warm look" aria-label="Headshot, warm look"><img src="assets/look-warm.jpg" alt=""></button>
+          <button class="still" type="button" aria-pressed="false" data-img="assets/look-character.jpg" data-cap="Headshot, character look" aria-label="Headshot, character look"><img src="assets/look-character.jpg" alt=""></button>
+          <button class="still" type="button" aria-pressed="false" data-img="assets/look-presenter.jpg" data-cap="Headshot, presenter look" aria-label="Headshot, presenter look"><img src="assets/look-presenter.jpg" alt=""></button>
+          <button class="still" type="button" aria-pressed="false" data-img="assets/still-air.jpg" data-cap="Production still" aria-label="Production still"><img src="assets/still-air.jpg" alt=""></button>
+          <button class="still" type="button" aria-pressed="false" data-img="assets/still-keys.jpg" data-cap="Behind the scenes" aria-label="Behind the scenes"><img src="assets/still-keys.jpg" alt=""></button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="press">
+    <div class="wrap">
+      <h2 class="x">Press</h2>
+      <div class="sec-body pr rv">
+        <div class="qcard">
+          <blockquote>&ldquo;I have the <span>looks, wit and drama.</span>&rdquo;</blockquote>
+          <cite class="m">Miracle Echeji, speaking to ThisDay, 9 October 2026</cite>
+          <a href="https://www.thisdaylive.com/2026/10/09/i-have-the-looks-wit-and-drama-to-win-bbn-miracle-echeji/" target="_blank" rel="noopener">Read the feature on ThisDay</a>
+        </div>
+        <div>
+          <h3 class="m">Awards and nominations</h3>
+          <div class="slot m">Award or nomination, year</div>
+          <div class="slot m">Award or nomination, year</div>
+          <div class="slot m">Award or nomination, year</div>
+          <p class="cap">Empty slots stay hidden on the live site until there is an entry.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="partners">
+    <div class="wrap">
+      <h2 class="x">Partnerships</h2>
+      <p class="sec-lead">Grouped by the kind of relationship, so a brand manager can see where a new deal would sit.</p>
+      <div class="sec-body tiers rv">
+        <div class="tier"><h3>Ambassador</h3><div class="slots"><div class="slot m">Logo</div><div class="slot m">Logo</div></div></div>
+        <div class="tier"><h3>Campaigns</h3><div class="slots"><div class="slot m">Logo</div><div class="slot m">Logo</div></div></div>
+        <div class="tier"><h3>Collaborations</h3><div class="slots"><div class="slot m">Logo</div><div class="slot m">Logo</div></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="career">
+    <div class="wrap">
+      <h2 class="x">Career</h2>
+      <div class="sec-body rv">
+        <ol class="track">
+          <li><h3 class="x">On air</h3><p>She starts in broadcasting and builds her presenting skills there.</p></li>
+          <li><h3 class="x">On screen</h3><p>Film roles follow: Someone Like You, Just A Friend, Compliance.</p></li>
+          <li><h3 class="x">Ozege</h3><p>A named role in Once Upon A Village.</p></li>
+        </ol>
+        <p class="draft">Order drawn from public sources. Dates and details to add with Miracle.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="booking">
+    <div class="wrap">
+      <div class="book rv">
+        <div>
+          <h2 class="x">Booking &amp; inquiries</h2>
+          <div class="mail">
+            <code id="mailAddr">bookings@miracleecheji.com</code>
+            <button class="copy" type="button" id="copyBtn">Copy</button>
+          </div>
+          <p class="cap">Placeholder address until the domain is live.</p>
+          <dl>
+            <div><dt class="m">Representation</dt><dd>Agent or manager name, agency and office contact go here, where a casting director expects them.</dd></div>
+            <div><dt class="m">Privacy</dt><dd>No personal phone number or home address appears anywhere on the site.</dd></div>
+          </dl>
+        </div>
+        <form id="bookForm" novalidate>
+          <div class="field"><label class="m" for="bk-name">Your name</label><input id="bk-name" name="name" type="text" autocomplete="name"></div>
+          <div class="field"><label class="m" for="bk-email">Email</label><input id="bk-email" name="email" type="email" autocomplete="email"></div>
+          <div class="field"><label class="m" for="bk-type">Inquiry type</label>
+            <select id="bk-type" name="type"><option>Casting</option><option>Brand partnership</option><option>Press</option><option>Appearance or hosting</option></select></div>
+          <div class="field"><label class="m" for="bk-msg">Message</label><textarea id="bk-msg" name="message"></textarea></div>
+          <div><button class="btn btn-amber" type="submit">Send inquiry</button></div>
+          <p class="form-note" id="formNote" role="status"></p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div class="foot-name x">Miracle Echeji</div>
+      <nav class="m" aria-label="Social">
+        <span class="social"><a href="https://www.instagram.com/mimi_echeji/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-ig"/></svg></a><a href="https://www.youtube.com/@miracleecheji" target="_blank" rel="noopener" aria-label="YouTube"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-yt"/></svg></a><a href="https://www.facebook.com/miracle.echeji/" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-fb"/></svg></a><a class="txt" href="https://nollywire.com/names/miracle-echeji" target="_blank" rel="noopener">Nollywire</a><a class="txt" href="https://ng.linkedin.com/in/miracle-emmanuella-echeji-822371218" target="_blank" rel="noopener">LinkedIn</a></span>
+      </nav>
+    </div>
+    <p class="fine">Design concept B, Title Sequence. Placeholder images and draft copy, for review only.</p>
+  </div>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(function(){
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var hasIO = 'IntersectionObserver' in window;
+
+  // Scroll reveal. Content is visible by default and only hidden once the observer is ready.
+  if(!reduce && hasIO){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, {threshold:.1, rootMargin:'0px 0px -6% 0px'});
+    [].forEach.call(document.querySelectorAll('.rv'), function(el){
+      if(el.getBoundingClientRect().top > window.innerHeight){ el.classList.add('pre'); io.observe(el); }
+    });
+  }
+
+  // Running timecode on the reel frame, 24 frames a second, paused when off screen.
+  var tc = document.getElementById('tc'), scope = document.getElementById('scope');
+  if(tc && !reduce){
+    var frame = 0, live = true;
+    var two = function(n){ return (n < 10 ? '0' : '') + n; };
+    if(hasIO){ new IntersectionObserver(function(en){ live = en[0].isIntersecting; }).observe(scope); }
+    setInterval(function(){
+      if(!live) return;
+      frame++;
+      tc.textContent = '00:' + two(Math.floor(frame / 1440) % 60) + ':' + two(Math.floor(frame / 24) % 60) + ':' + two(frame % 24);
+    }, 1000 / 24);
+  }
+
+  // Stills viewer.
+  var stage = document.getElementById('stage'), cap = document.getElementById('stageCap');
+  var thumbs = [].slice.call(document.querySelectorAll('.thumbs button'));
+  thumbs.forEach(function(btn){
+    btn.addEventListener('click', function(){
+      thumbs.forEach(function(b){ b.setAttribute('aria-pressed', b === btn ? 'true' : 'false'); });
+      document.getElementById('stageImg').src = btn.getAttribute('data-img');
+      cap.textContent = btn.getAttribute('data-cap');
+      if(!reduce && stage.animate){ stage.animate([{opacity:.35},{opacity:1}], {duration:380, easing:'ease-out'}); }
+    });
+  });
+
+
+  // Her real video loads only once the play affordance is clicked.
+  [].forEach.call(document.querySelectorAll('[data-yt]'), function(btn){
+    btn.addEventListener('click', function(ev){
+      var id = btn.getAttribute('data-yt');
+      if(!id || btn.querySelector('iframe')) return;
+      ev.preventDefault(); ev.stopPropagation();
+      var f = document.createElement('iframe');
+      f.src = 'https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&rel=0&modestbranding=1';
+      f.title = 'Video'; f.className = 'ytframe';
+      f.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+      f.setAttribute('allowfullscreen','');
+      btn.appendChild(f);
+    }, true);
+  });
+
+  // Concept notes for controls that need the live site.
+  var toast = document.getElementById('toast'), timer;
+  function say(msg){ toast.textContent = msg; toast.classList.add('on'); clearTimeout(timer); timer = setTimeout(function(){ toast.classList.remove('on'); }, 3200); }
+  [].forEach.call(document.querySelectorAll('[data-note]'), function(el){
+    el.addEventListener('click', function(ev){ ev.preventDefault(); say(el.getAttribute('data-note')); });
+  });
+
+  // Copy the booking address.
+  var copyBtn = document.getElementById('copyBtn'), addr = document.getElementById('mailAddr');
+  copyBtn.addEventListener('click', function(){
+    var done = function(){ copyBtn.textContent = 'Copied'; setTimeout(function(){ copyBtn.textContent = 'Copy'; }, 1800); };
+    var select = function(){ var r = document.createRange(); r.selectNodeContents(addr); var s = getSelection(); s.removeAllRanges(); s.addRange(r); };
+    if(navigator.clipboard && navigator.clipboard.writeText){ navigator.clipboard.writeText(addr.textContent).then(done, select); } else { select(); }
+  });
+
+  // Booking form. No backend in the concept.
+  document.getElementById('bookForm').addEventListener('submit', function(ev){
+    ev.preventDefault();
+    document.getElementById('formNote').textContent = 'Concept only. On the live site this reaches Miracle and her team.';
+  });
+})();
+</script>
+</body>
+</html>

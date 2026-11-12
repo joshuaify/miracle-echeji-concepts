@@ -1,0 +1,622 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex,nofollow">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Miracle Echeji</title>
+
+<!--
+  DESIGN CONCEPT C, "MARQUEE", for review only.
+
+  VIDEOS: the three in the "Watch" section are her own, from
+  youtube.com/@miracleecheji. To change one, edit its data-yt="..." id and its
+  poster image assets/yt-<id>.jpg. In https://www.youtube.com/watch?v=ABC123
+  the id is ABC123. A proper cut-down showreel is still to be made.
+
+  TO SWAP IN HER REAL PHOTOGRAPHS:
+  replace the files in the assets folder, keeping the same names:
+  hero.jpg          her lead portrait, fills the first screen
+  reel-poster.jpg   the still behind the showreel, before it is played
+  about.jpg         the portrait beside her biography
+  look-commercial.jpg, look-warm.jpg, look-presenter.jpg, look-character.jpg
+  still-air.jpg, still-keys.jpg   two production stills
+  break.jpg         the wide band behind "Mimi of Lagos"
+
+  Placeholder photographs are free stock from nappy.co and pravatar.cc.
+  They are stand-ins and must all be replaced before this goes live.
+  The placeholder video is Blender Foundation's "Big Buck Bunny", used because
+  it is openly licensed and obviously not her reel.
+-->
+
+<style>
+  /* Self-hosted so the page works with no internet, straight from the folder. */
+  @font-face{font-family:'Anton';font-style:normal;font-weight:400;font-display:swap;
+    src:url(assets/fonts/1Ptgg87LROyAm3Kz-C8.woff2) format('woff2');
+    unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+  @font-face{font-family:'Anton';font-style:normal;font-weight:400;font-display:swap;
+    src:url(assets/fonts/1Ptgg87LROyAm3K9-C8QSw.woff2) format('woff2');
+    unicode-range:U+0100-02AF,U+0304,U+0308,U+0329,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+  @font-face{font-family:'Archivo';font-style:normal;font-weight:100 900;font-stretch:62% 125%;font-display:swap;
+    src:url(assets/fonts/k3kQo8UDI-1M0wlSfdnoLg.woff2) format('woff2');
+    unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+  @font-face{font-family:'Archivo';font-style:normal;font-weight:100 900;font-stretch:62% 125%;font-display:swap;
+    src:url(assets/fonts/k3kQo8UDI-1M0wlSfdfoLnnA.woff2) format('woff2');
+    unicode-range:U+0100-02AF,U+0304,U+0308,U+0329,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+
+  /* Layout concept: her portrait fills the first screen and her name runs edge to
+     edge across it. Below, giant condensed headings on a single cocoa ground, with
+     every photograph graded into one bronze-and-cocoa world so a mixed set of
+     images reads as one body of work. */
+  :root{
+    --cocoa:#120B08; --cocoa-2:#1C120D; --cocoa-3:#2B1B13;
+    --umber:#553523; --bronze:#E6A970; --ivory:#F4EADC; --muted:#BBA694;
+    --line:rgba(244,234,220,.16);
+    --disp:"Anton","Arial Narrow",Impact,sans-serif;
+    --text:"Archivo","Helvetica Neue",Arial,sans-serif;
+    --side:max(18px,3.4vw); --side-r:max(18px,3.4vw);
+    color-scheme:dark;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth; scrollbar-color:var(--umber) var(--cocoa)}
+  body{margin:0; background:var(--cocoa); color:var(--ivory); font-family:var(--text);
+    font-size:1.0625rem; line-height:1.6; -webkit-font-smoothing:antialiased;
+    caret-color:var(--bronze); overflow-x:hidden}
+  ::selection{background:var(--bronze); color:var(--cocoa)}
+  h1,h2,h3,p,figure,dl,dd,ul,ol{margin:0}
+  ul,ol{padding:0; list-style:none}
+  a{color:inherit; text-decoration:none}
+  :focus-visible{outline:2px solid var(--bronze); outline-offset:3px}
+  section{scroll-margin-top:76px}
+  img{max-width:100%}
+
+  .wrap{width:100%; max-width:1400px; margin-inline:auto; padding-left:var(--side); padding-right:var(--side-r)}
+  .d{font-family:var(--disp); font-weight:400; text-transform:uppercase; line-height:.9; letter-spacing:.005em}
+  .w{font-family:var(--text); font-stretch:125%; font-weight:700; font-size:.7rem; letter-spacing:.07em; text-transform:uppercase}
+  .mut{color:var(--muted)}
+  .tbc{color:var(--muted); font-style:italic}
+
+  .chip{margin:0; padding-block:8px; text-align:center; font-size:.78rem; color:var(--muted); background:var(--cocoa-2); border-bottom:1px solid var(--line)}
+  .progress{position:fixed; top:0; left:0; width:100%; height:3px; z-index:60; background:var(--bronze); transform-origin:left; transform:scaleX(0); pointer-events:none}
+
+  .btn{display:inline-flex; align-items:center; justify-content:center; gap:10px; min-height:48px; padding:0 24px; cursor:pointer; white-space:nowrap;
+    font-family:var(--text); font-stretch:125%; font-weight:700; font-size:.74rem; letter-spacing:.06em; text-transform:uppercase;
+    color:var(--ivory); background:transparent; border:1px solid rgba(244,234,220,.5); border-radius:999px;
+    transition:background .25s cubic-bezier(.16,1,.3,1),color .25s,border-color .25s,transform .12s}
+  .btn:hover{background:var(--ivory); color:var(--cocoa); border-color:var(--ivory)}
+  .btn:active{transform:scale(.98)}
+  .btn-fill{background:var(--ivory); color:var(--cocoa); border-color:var(--ivory)}
+  .btn-fill:hover{background:var(--bronze); border-color:var(--bronze)}
+  .tri{display:block; width:0; height:0; border-style:solid; border-width:6px 0 6px 10px; border-color:transparent transparent transparent currentColor}
+
+  /* Every photograph is graded into the same bronze-and-cocoa world. */
+  .ph{position:relative; overflow:hidden; background:var(--cocoa-3); display:block}
+  .ph img{width:100%; height:100%; object-fit:cover; display:block; filter:grayscale(1) contrast(1.06) brightness(.94)}
+  .ph::before{content:""; position:absolute; inset:0; z-index:1; pointer-events:none;
+    background:var(--bronze); mix-blend-mode:color; opacity:.72}
+  .ph::after{content:""; position:absolute; inset:0; z-index:2; pointer-events:none;
+    background:linear-gradient(165deg,rgba(230,169,112,.20),rgba(43,27,19,.32) 55%,rgba(18,11,8,.62));
+    mix-blend-mode:multiply}
+  .frame{border-radius:22px}
+  figcaption{margin-top:12px}
+
+  /* nav */
+  .nav{position:sticky; top:0; z-index:40; height:68px; margin-bottom:-68px; transition:background .3s,border-color .3s; border-bottom:1px solid transparent}
+  .nav.solid{background:rgba(18,11,8,.9); -webkit-backdrop-filter:blur(14px); backdrop-filter:blur(14px); border-bottom-color:var(--line)}
+  .nav-in{display:flex; align-items:center; justify-content:space-between; gap:18px; height:68px}
+  .brand{font-family:var(--text); font-stretch:125%; font-weight:800; font-size:.9rem; letter-spacing:.03em; text-transform:uppercase; white-space:nowrap}
+  .links{display:flex; gap:6px}
+  .links a{display:inline-flex; align-items:center; min-height:44px; padding:0 14px; color:rgba(244,234,220,.82); transition:color .2s}
+  .links a:hover{color:var(--bronze)}
+  .nav .btn{min-height:44px; padding:0 20px}
+  @media(max-width:920px){.links{display:none}}
+
+  /* hero */
+  .hero{position:relative; min-height:clamp(580px,calc(100svh - 40px),1040px); display:flex; align-items:flex-end; overflow:hidden}
+  .sentinel{position:absolute; top:0; left:0; width:1px; height:120px; pointer-events:none}
+  .hero .ph{position:absolute; inset:0}
+  .hero .ph img{object-position:58% 28%}
+  .hero::after{content:""; position:absolute; inset:0; z-index:3; pointer-events:none;
+    background:linear-gradient(to top,rgba(18,11,8,.97) 0%,rgba(18,11,8,.74) 26%,rgba(18,11,8,.05) 58%),
+               linear-gradient(to bottom,rgba(18,11,8,.6) 0%,rgba(18,11,8,0) 24%)}
+  .hero-in{position:relative; z-index:4; width:100%; padding-left:var(--side); padding-right:var(--side-r); padding-bottom:clamp(22px,3.4vw,44px)}
+  .hero-top{display:flex; justify-content:space-between; gap:16px; margin-bottom:clamp(4px,.8vw,10px)}
+  .name{font-size:15vw; line-height:.84; white-space:nowrap; overflow:hidden}
+  .name .fit{display:inline-block}
+  .name .ln{display:inline-block}
+  .hero-row{display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:18px 40px; margin-top:clamp(14px,2vw,26px)}
+  .logline{max-width:42ch; font-size:clamp(1.02rem,1.5vw,1.3rem); line-height:1.45}
+  .hero-cta{display:flex; flex-wrap:wrap; gap:12px}
+  @media(max-width:760px){
+    .hero{min-height:clamp(560px,calc(100svh - 62px),900px)}
+    .name{font-size:27vw; line-height:.92}
+    .name .ln{display:block}
+    .hero-top span + span{display:none}
+    .hero-cta .btn{flex:1 1 auto}
+  }
+
+  .sec{padding-block:clamp(72px,10vw,150px)}
+  .sec h2.d{font-size:clamp(3.2rem,10.4vw,9rem)}
+  .sec-body{margin-top:clamp(28px,4.4vw,60px)}
+
+  /* videos: her real YouTube videos. The player loads only when clicked. */
+  .vid{position:relative; display:block; width:100%; aspect-ratio:16/9; padding:0; border:1px solid var(--line); border-radius:22px; overflow:hidden;
+    cursor:pointer; background:var(--cocoa-3); color:inherit; font:inherit; text-align:left}
+  .vid .ph{position:absolute; inset:0}
+  .vid .ph::before{opacity:.5}
+  .vid:hover .ph img{filter:grayscale(1) contrast(1.06) brightness(1.06)}
+  .vid-ui{position:absolute; inset:0; z-index:4; display:grid; grid-template-rows:auto 1fr auto; padding:clamp(14px,2.2vw,32px);
+    background:linear-gradient(to top,rgba(18,11,8,.9),rgba(18,11,8,.1) 55%)}
+  .vid-top{display:flex; justify-content:space-between; align-items:flex-start; gap:12px}
+  .vid-title{font-weight:600; font-size:clamp(1rem,1.5vw,1.45rem); line-height:1.25; max-width:34ch; text-wrap:balance}
+  .vid.feature .vid-title{font-size:clamp(1.3rem,2.4vw,2.3rem); max-width:24ch}
+  .disc{align-self:center; justify-self:start; width:clamp(54px,6vw,92px); height:clamp(54px,6vw,92px); border-radius:50%;
+    background:var(--bronze); color:var(--cocoa); display:grid; place-items:center; transition:transform .35s cubic-bezier(.16,1,.3,1)}
+  .disc .tri{border-width:10px 0 10px 16px; margin-left:4px}
+  .vid:hover .disc{transform:scale(1.1)}
+  .vid iframe{position:absolute; inset:0; width:100%; height:100%; border:0; z-index:5}
+  .vid-row{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:clamp(12px,1.6vw,22px); margin-top:clamp(12px,1.6vw,22px)}
+  @media(max-width:760px){.vid-row{grid-template-columns:1fr}}
+
+  /* social icons */
+  .social{display:flex; flex-wrap:wrap; gap:10px}
+  .social a{width:48px; height:48px; border-radius:50%; border:1px solid rgba(244,234,220,.4); display:grid; place-items:center;
+    color:var(--ivory); transition:background .25s,color .25s,border-color .25s,transform .25s}
+  .social a:hover{background:var(--bronze); color:var(--cocoa); border-color:var(--bronze); transform:translateY(-2px)}
+  .social svg{width:19px; height:19px; fill:currentColor}
+  .profiles{display:flex; flex-wrap:wrap; gap:8px 22px; margin-top:12px}
+  .profiles a{display:inline-flex; align-items:center; min-height:44px; border-bottom:1px solid rgba(244,234,220,.35); transition:color .2s,border-color .2s}
+  .profiles a:hover{color:var(--bronze); border-color:var(--bronze)}
+
+  /* about */
+  .about{display:grid; grid-template-columns:5fr 7fr; gap:clamp(28px,5.5vw,90px); align-items:center}
+  .about .ph{aspect-ratio:4/5}
+  .about .ph img{object-position:50% 25%}
+  .lead{font-weight:500; font-size:clamp(1.5rem,2.9vw,2.6rem); line-height:1.16; letter-spacing:-.012em; text-wrap:balance}
+  .about p.body{margin-top:22px; max-width:56ch; color:var(--muted)}
+  .facts{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); margin-top:clamp(26px,3.4vw,44px); border-top:1px solid var(--line)}
+  .facts > div{padding:16px 16px 16px 0; border-bottom:1px solid var(--line)}
+  .facts dd{margin-top:4px; font-weight:600; font-size:1.12rem}
+  @media(max-width:860px){.about{grid-template-columns:1fr} .about figure{max-width:440px}}
+
+  /* photographs */
+  .looks{display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:clamp(12px,1.6vw,22px)}
+  .looks .ph{aspect-ratio:3/4; transition:transform .5s cubic-bezier(.16,1,.3,1)}
+  .looks figure:hover .ph{transform:scale(1.02)}
+  .looks figure:hover .ph img{filter:grayscale(1) contrast(1.06) brightness(1.08)}
+  .stills{display:grid; grid-template-columns:1.1fr repeat(2,minmax(0,1fr)); gap:clamp(12px,1.6vw,22px); margin-top:clamp(28px,4vw,54px); align-items:end}
+  .stills .ph{aspect-ratio:3/2}
+  .looks figure:nth-child(4) .ph img{object-position:50% 18%}
+  .stills p{max-width:26ch; color:var(--muted)}
+  @media(max-width:860px){
+    .looks{grid-auto-flow:column; grid-template-columns:none; grid-auto-columns:68%; overflow-x:auto; scroll-snap-type:x mandatory; padding-bottom:10px; margin-right:calc(var(--side-r) * -1); padding-right:var(--side-r); scrollbar-width:none}
+    .looks figure{scroll-snap-align:start}
+    .stills{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .stills p{grid-column:1 / -1; max-width:none}
+    .stills figcaption{font-size:.6rem}
+  }
+
+  /* credits */
+  .grp{display:flex; align-items:baseline; justify-content:space-between; gap:16px; padding-bottom:12px; border-bottom:1px solid var(--ivory)}
+  .cr{display:grid; grid-template-columns:minmax(0,1fr) auto; align-items:baseline; gap:8px 28px; padding-block:clamp(14px,1.9vw,26px); border-bottom:1px solid var(--line); transition:padding-left .4s cubic-bezier(.16,1,.3,1),color .3s}
+  .cr .d{font-size:clamp(2.1rem,6.2vw,5.6rem); line-height:.94}
+  .cr:hover{padding-left:clamp(8px,1.4vw,22px); color:var(--bronze)}
+  .cr .meta{text-align:right}
+  .empty{padding-block:18px; border-bottom:1px solid var(--line)}
+  .grp.next{margin-top:clamp(34px,4.6vw,60px)}
+  .after{display:grid; grid-template-columns:1fr auto; gap:22px 40px; align-items:center; margin-top:clamp(30px,4vw,52px)}
+  .skills{display:flex; flex-wrap:wrap; gap:8px; margin-top:10px}
+  .skills li{border:1px solid rgba(244,234,220,.4); border-radius:999px; padding:7px 15px; font-size:.95rem}
+  .skills li.slot{border-style:dashed; color:var(--muted); font-style:italic}
+  .acts{display:flex; flex-wrap:wrap; gap:12px}
+  @media(max-width:760px){.cr{grid-template-columns:1fr} .cr .meta{text-align:left} .after{grid-template-columns:1fr}}
+
+  /* on air */
+  .air{display:grid; grid-template-columns:1fr 1.25fr; gap:clamp(26px,5vw,80px); align-items:end}
+  .air h2.d{font-size:clamp(3.2rem,10.4vw,9rem)}
+  .clips{background:var(--cocoa-2); border:1px solid var(--line); border-radius:22px; overflow:hidden}
+  .clip{display:grid; grid-template-columns:auto minmax(0,1fr) auto; align-items:center; gap:16px; padding:16px 20px}
+  .clip + .clip{border-top:1px solid var(--line)}
+  .pb{width:48px; height:48px; border-radius:50%; border:1px solid rgba(244,234,220,.5); background:transparent; color:var(--ivory); display:grid; place-items:center; cursor:pointer; transition:background .25s,color .25s,border-color .25s}
+  .pb:hover{background:var(--bronze); color:var(--cocoa); border-color:var(--bronze)}
+  .pb .tri{margin-left:3px}
+  .clip b{display:block; font-weight:600}
+  .bar{display:block; height:2px; margin-top:9px; background:var(--line)}
+  .clip time{font-variant-numeric:tabular-nums; color:var(--muted)}
+  @media(max-width:860px){.air{grid-template-columns:1fr}}
+
+  /* visual break */
+  .break{position:relative; height:clamp(320px,62vw,720px); display:flex; align-items:center; overflow:hidden}
+  .break .ph{position:absolute; inset:0}
+  .break .ph img{object-position:50% 62%}
+  .run{position:relative; z-index:4; display:flex; width:max-content; white-space:nowrap}
+  .run span{font-size:clamp(3.4rem,12vw,10.5rem); padding-right:.3em; color:transparent; -webkit-text-stroke:1.5px var(--ivory)}
+  .run span:nth-child(odd){color:var(--ivory); -webkit-text-stroke:0}
+
+  /* press */
+  .press a,.press .slot{display:grid; grid-template-columns:11rem minmax(0,1fr) auto; gap:8px 26px; align-items:baseline; padding-block:clamp(18px,2.2vw,30px); border-bottom:1px solid var(--line)}
+  .press a b{font-weight:500; font-size:clamp(1.3rem,2.5vw,2.1rem); line-height:1.2; transition:color .25s}
+  .press a:hover b{color:var(--bronze)}
+  .press .slot{color:var(--muted); font-style:italic}
+  @media(max-width:760px){.press a,.press .slot{grid-template-columns:1fr}}
+
+  /* partners and career */
+  .pc{display:grid; grid-template-columns:1fr 1fr; gap:clamp(40px,7vw,110px)}
+  .pc h2.d{font-size:clamp(2.8rem,7vw,6rem)}
+  .logos{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:10px; margin-top:26px}
+  .logos div{height:76px; border:1px dashed rgba(244,234,220,.28); border-radius:14px; display:grid; place-items:center; color:var(--muted); font-style:italic; font-size:.9rem}
+  .steps{margin-top:26px}
+  .steps li{display:grid; grid-template-columns:auto minmax(0,1fr); gap:20px; align-items:baseline; padding-block:18px; border-bottom:1px solid var(--line)}
+  .steps li:first-child{border-top:1px solid var(--line)}
+  .steps .n{font-size:2.6rem; color:var(--umber); -webkit-text-stroke:1px var(--muted); min-width:1.4em}
+  .steps b{display:block; font-weight:600; font-size:1.14rem}
+  @media(max-width:860px){.pc{grid-template-columns:1fr}}
+
+  /* booking */
+  .book{background:var(--cocoa-2); border:1px solid var(--line); border-radius:28px; padding:clamp(22px,4.6vw,68px); display:grid; grid-template-columns:1fr 1fr; gap:clamp(30px,5.5vw,84px); align-items:start}
+  .book h2.d{font-size:clamp(3rem,7.6vw,6.6rem)}
+  .mail{display:flex; flex-wrap:wrap; align-items:center; gap:12px; margin-top:26px}
+  .mail code{font:500 clamp(1.05rem,1.9vw,1.4rem) var(--text); color:var(--bronze); user-select:all; overflow-wrap:anywhere; min-width:0}
+  .copy{min-height:44px; padding:0 18px}
+  .book dl{margin-top:26px; display:grid; gap:20px}
+  .book dd{margin-top:4px; max-width:44ch}
+  form{display:grid; gap:16px}
+  .field{display:grid; gap:8px}
+  .field input,.field select,.field textarea{width:100%; min-height:50px; padding:12px 14px; font:400 1rem var(--text); color:var(--ivory); background:var(--cocoa); border:1px solid rgba(244,234,220,.3); border-radius:12px}
+  .field textarea{min-height:128px; resize:vertical}
+  .field input:focus,.field select:focus,.field textarea:focus{outline:none; border-color:var(--bronze); box-shadow:0 0 0 3px rgba(230,169,112,.22)}
+  .status{min-height:1.5em; color:var(--bronze)}
+  @media(max-width:860px){.book{grid-template-columns:1fr}}
+
+  footer{padding-top:clamp(40px,6vw,80px); overflow:hidden}
+  .foot{display:flex; flex-wrap:wrap; justify-content:space-between; gap:14px 30px; padding-bottom:22px}
+  .foot ul{display:flex; flex-wrap:wrap; gap:0 22px}
+  .foot a{display:inline-flex; align-items:center; min-height:44px; color:var(--muted); transition:color .2s}
+  .foot a:hover{color:var(--bronze)}
+  .mark{font-size:15vw; line-height:.78; white-space:nowrap; color:var(--cocoa-3); margin-bottom:-.2em; padding-left:var(--side); padding-right:var(--side-r)}
+  .mark .fit{display:inline-block}
+
+  .toast{position:fixed; z-index:71; left:50%; bottom:22px; transform:translate(-50%,12px); opacity:0; pointer-events:none;
+    width:max-content; max-width:min(90vw,460px); background:var(--ivory); color:var(--cocoa); border-radius:14px; padding:12px 16px; font-size:.95rem; transition:opacity .25s,transform .25s}
+  .toast.on{opacity:1; transform:translate(-50%,0)}
+
+  .rv.pre{opacity:0; transform:translateY(34px)}
+  .rv.in{opacity:1; transform:none; transition:opacity .9s ease,transform .9s cubic-bezier(.16,1,.3,1)}
+  @media(prefers-reduced-motion:no-preference){
+    .hero .ph img{animation:settle 2.4s cubic-bezier(.16,1,.3,1) both}
+    .name .ln{animation:rise 1s .15s cubic-bezier(.16,1,.3,1) both}
+    .name .ln + .ln{animation-delay:.27s}
+    .hero-top,.hero-row{animation:fade 1s .7s ease both}
+    .run{animation:run 34s linear infinite}
+    @keyframes settle{from{transform:scale(1.1)}}
+    @keyframes rise{from{transform:translateY(105%)}}
+    @keyframes fade{from{opacity:0}}
+    @keyframes run{to{transform:translateX(-50%)}}
+    @supports (animation-timeline: scroll()){
+      .progress{animation:grow linear both; animation-timeline:scroll(root)}
+      @keyframes grow{to{transform:scaleX(1)}}
+    }
+  }
+  @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto} .rv.pre{opacity:1; transform:none}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+<symbol id="i-ig" viewBox="0 0 24 24"><path d="M7.0301.084c-1.2768.0602-2.1487.264-2.911.5634-.7888.3075-1.4575.72-2.1228 1.3877-.6652.6677-1.075 1.3368-1.3802 2.127-.2954.7638-.4956 1.6365-.552 2.914-.0564 1.2775-.0689 1.6882-.0626 4.947.0062 3.2586.0206 3.6671.0825 4.9473.061 1.2765.264 2.1482.5635 2.9107.308.7889.72 1.4573 1.388 2.1228.6679.6655 1.3365 1.0743 2.1285 1.38.7632.295 1.6361.4961 2.9134.552 1.2773.056 1.6884.069 4.9462.0627 3.2578-.0062 3.668-.0207 4.9478-.0814 1.28-.0607 2.147-.2652 2.9098-.5633.7889-.3086 1.4578-.72 2.1228-1.3881.665-.6682 1.0745-1.3378 1.3795-2.1284.2957-.7632.4966-1.636.552-2.9124.056-1.2809.0692-1.6898.063-4.948-.0063-3.2583-.021-3.6668-.0817-4.9465-.0607-1.2797-.264-2.1487-.5633-2.9117-.3084-.7889-.72-1.4568-1.3876-2.1228C21.2982 1.33 20.628.9208 19.8378.6165 19.074.321 18.2017.1197 16.9244.0645 15.6471.0093 15.236-.005 11.977.0014 8.718.0076 8.31.0215 7.0301.0839m.1402 21.6932c-1.17-.0509-1.8053-.2453-2.2287-.408-.5606-.216-.96-.4771-1.3819-.895-.422-.4178-.6811-.8186-.9-1.378-.1644-.4234-.3624-1.058-.4171-2.228-.0595-1.2645-.072-1.6442-.079-4.848-.007-3.2037.0053-3.583.0607-4.848.05-1.169.2456-1.805.408-2.2282.216-.5613.4762-.96.895-1.3816.4188-.4217.8184-.6814 1.3783-.9003.423-.1651 1.0575-.3614 2.227-.4171 1.2655-.06 1.6447-.072 4.848-.079 3.2033-.007 3.5835.005 4.8495.0608 1.169.0508 1.8053.2445 2.228.408.5608.216.96.4754 1.3816.895.4217.4194.6816.8176.9005 1.3787.1653.4217.3617 1.056.4169 2.2263.0602 1.2655.0739 1.645.0796 4.848.0058 3.203-.0055 3.5834-.061 4.848-.051 1.17-.245 1.8055-.408 2.2294-.216.5604-.4763.96-.8954 1.3814-.419.4215-.8181.6811-1.3783.9-.4224.1649-1.0577.3617-2.2262.4174-1.2656.0595-1.6448.072-4.8493.079-3.2045.007-3.5825-.006-4.848-.0608M16.953 5.5864A1.44 1.44 0 1 0 18.39 4.144a1.44 1.44 0 0 0-1.437 1.4424M5.8385 12.012c.0067 3.4032 2.7706 6.1557 6.173 6.1493 3.4026-.0065 6.157-2.7701 6.1506-6.1733-.0065-3.4032-2.771-6.1565-6.174-6.1498-3.403.0067-6.156 2.771-6.1496 6.1738M8 12.0077a4 4 0 1 1 4.008 3.9921A3.9996 3.9996 0 0 1 8 12.0077"/></symbol>
+<symbol id="i-yt" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></symbol>
+<symbol id="i-fb" viewBox="0 0 24 24"><path d="M9.101 23.691v-7.98H6.627v-3.667h2.474v-1.58c0-4.085 1.848-5.978 5.858-5.978.401 0 .955.042 1.468.103a8.68 8.68 0 0 1 1.141.195v3.325a8.623 8.623 0 0 0-.653-.036 26.805 26.805 0 0 0-.733-.009c-.707 0-1.259.096-1.675.309a1.686 1.686 0 0 0-.679.622c-.258.42-.374.995-.374 1.752v1.297h3.919l-.386 2.103-.287 1.564h-3.246v8.245C19.396 23.238 24 18.179 24 12.044c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.628 3.874 10.35 9.101 11.647Z"/></symbol>
+</svg>
+
+<div class="progress" aria-hidden="true"></div>
+<p class="chip"><span class="wrap" style="display:block">Design concept C. Stand-in photographs and video, a sample agent and draft copy, for review.</span></p>
+
+<header class="nav" id="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="#top">Miracle Echeji</a>
+    <nav class="links" aria-label="Sections">
+      <a class="w" href="#watch">Watch</a>
+      <a class="w" href="#about">About</a>
+      <a class="w" href="#photos">Photographs</a>
+      <a class="w" href="#credits">Credits</a>
+      <a class="w" href="#press">Press</a>
+    </nav>
+    <a class="btn btn-fill" href="#booking">Booking</a>
+  </div>
+</header>
+
+<main id="top">
+
+  <section class="hero" id="hero">
+    <span class="sentinel" id="sentinel"></span>
+    <span class="ph"><img src="assets/hero.jpg" alt="Stand-in photograph. Her lead portrait goes here."></span>
+    <div class="hero-in">
+      <div class="hero-top">
+        <span class="w">Actress and broadcaster</span>
+        <span class="w mut">Stand-in photograph</span>
+      </div>
+      <h1 class="name d" data-fit aria-label="Miracle Echeji"><span class="fit" aria-hidden="true"><span class="ln">Miracle</span> <span class="ln">Echeji</span></span></h1>
+      <div class="hero-row">
+        <p class="logline">Nollywood actress and broadcaster, based in Lagos. Audiences know her as Mimi of Lagos.</p>
+        <div class="hero-cta">
+          <a class="btn btn-fill" href="#booking">Booking &amp; inquiries</a>
+          <a class="btn" href="#watch"><i class="tri"></i>Watch</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="watch">
+    <div class="wrap">
+      <h2 class="d rv">Watch</h2>
+      <div class="sec-body rv">
+        <button class="vid feature" type="button" data-yt="T1VItagIymk" aria-label="Play: The Truth Podcast, Episode One">
+          <span class="ph"><img src="assets/yt-T1VItagIymk.jpg" alt=""></span>
+          <span class="vid-ui">
+            <span class="vid-top"><span class="w">Her podcast</span><span class="w mut">YouTube</span></span>
+            <span class="disc"><i class="tri"></i></span>
+            <span class="vid-title">The Truth Podcast, Episode One. Change the Family, Change the Society.</span>
+          </span>
+        </button>
+        <div class="vid-row">
+          <button class="vid" type="button" data-yt="J9s2lM6P1c8" aria-label="Play: her clip about Just A Friend">
+            <span class="ph"><img src="assets/yt-J9s2lM6P1c8.jpg" alt=""></span>
+            <span class="vid-ui">
+              <span class="vid-top"><span class="w">On screen</span><span class="w mut">YouTube</span></span>
+              <span class="disc"><i class="tri"></i></span>
+              <span class="vid-title">On Just A Friend, by Ruth Kadiri.</span>
+            </span>
+          </button>
+          <button class="vid" type="button" data-yt="usD43AMXON4" aria-label="Play: her clip about Ruth Kadiri 247">
+            <span class="ph"><img src="assets/yt-usD43AMXON4.jpg" alt=""></span>
+            <span class="vid-ui">
+              <span class="vid-top"><span class="w">Clip</span><span class="w mut">YouTube</span></span>
+              <span class="disc"><i class="tri"></i></span>
+              <span class="vid-title">Still showing on Ruth Kadiri 247.</span>
+            </span>
+          </button>
+        </div>
+        <p class="mut" style="margin-top:16px; font-size:.95rem; max-width:64ch">These are her own videos, from
+          <a href="https://www.youtube.com/@miracleecheji" target="_blank" rel="noopener" style="border-bottom:1px solid var(--bronze); color:var(--bronze)">her YouTube channel</a>.
+          A cut-down showreel, a minute or two of her strongest scenes, is the one thing still missing, and it is the first thing a casting director looks for.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="about" style="padding-top:0">
+    <div class="wrap about rv">
+      <figure>
+        <span class="ph frame"><img src="assets/about.jpg" alt="Stand-in photograph."></span>
+        <figcaption class="w mut">Stand-in photograph</figcaption>
+      </figure>
+      <div>
+        <h2 class="lead">Miracle Echeji is a Nollywood actress and broadcaster from Mbaise, Imo State.</h2>
+        <p class="body">She built her presenting skills in broadcasting before she moved to the screen. Her film work includes Someone Like You, Just A Friend and Compliance, and she plays Ozege in Once Upon A Village.</p>
+        <dl class="facts">
+          <div><dt class="w mut">Known as</dt><dd>Mimi of Lagos</dd></div>
+          <div><dt class="w mut">Based in</dt><dd>Lagos, Nigeria</dd></div>
+          <div><dt class="w mut">Works as</dt><dd>Actress, broadcaster</dd></div>
+          <div><dt class="w mut">Guild</dt><dd class="tbc">To confirm</dd></div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="photos" style="padding-top:0">
+    <div class="wrap">
+      <h2 class="d rv">Four looks.</h2>
+      <div class="sec-body">
+        <div class="looks rv">
+          <figure><span class="ph frame"><img src="assets/look-commercial.jpg" alt="Stand-in headshot."></span><figcaption class="w">Commercial</figcaption></figure>
+          <figure><span class="ph frame"><img src="assets/look-warm.jpg" alt="Stand-in headshot."></span><figcaption class="w">Warm</figcaption></figure>
+          <figure><span class="ph frame"><img src="assets/look-presenter.jpg" alt="Stand-in headshot."></span><figcaption class="w">Presenter</figcaption></figure>
+          <figure><span class="ph frame"><img src="assets/look-character.jpg" alt="Stand-in headshot."></span><figcaption class="w">Character</figcaption></figure>
+        </div>
+        <div class="stills rv">
+          <p>A small set of production stills sits apart from the headshots.</p>
+          <figure><span class="ph frame"><img src="assets/still-air.jpg" alt="Stand-in production still."></span><figcaption class="w mut">On air</figcaption></figure>
+          <figure><span class="ph frame"><img src="assets/still-keys.jpg" alt="Stand-in production still."></span><figcaption class="w mut">In studio</figcaption></figure>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="credits" style="padding-top:0">
+    <div class="wrap">
+      <h2 class="d rv">On screen</h2>
+      <div class="sec-body rv">
+        <div class="grp"><span class="w">Film and television</span><span class="w mut">5 credits</span></div>
+        <div class="cr"><span class="d">Compliance</span><span class="meta w mut">2026 &middot; Drama &middot; with Van Vicker</span></div>
+        <div class="cr"><span class="d">To Find A Wife</span><span class="meta w mut">2026 &middot; Romance</span></div>
+        <div class="cr"><span class="d">Once Upon A Village</span><span class="meta w">as Ozege</span></div>
+        <div class="cr"><span class="d">Just A Friend</span><span class="meta w mut">by Ruth Kadiri &middot; with Maurice Sam</span></div>
+        <div class="cr"><span class="d">Someone Like You</span><span class="meta w mut">role to confirm</span></div>
+        <div class="grp next"><span class="w">Theatre</span></div>
+        <p class="empty tbc">No credits listed yet.</p>
+        <div class="grp next"><span class="w">Commercials and hosting</span></div>
+        <p class="empty tbc">Her broadcast and presenting work goes here.</p>
+        <div class="after">
+          <div>
+            <span class="w mut">Special skills</span>
+            <ul class="skills"><li>Presenting</li><li>Broadcast hosting</li><li class="slot">Languages to add</li><li class="slot">Dialects to add</li></ul>
+          </div>
+          <div class="acts">
+            <button class="btn btn-fill" type="button" data-note="On the live site this downloads her résumé as a PDF.">Download résumé (PDF)</button>
+            <a class="btn" href="https://nollywire.com/names/miracle-echeji" target="_blank" rel="noopener">Her profile on Nollywire</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="air" style="padding-top:0">
+    <div class="wrap air rv">
+      <h2 class="d">On air</h2>
+      <div class="clips">
+        <div class="clip"><button class="pb" type="button" aria-label="Play presenting reel" data-note="Her presenting reel plays here on the live site."><i class="tri"></i></button><div><b>Presenting reel</b><span class="bar" aria-hidden="true"></span></div><time>0:00</time></div>
+        <div class="clip"><button class="pb" type="button" aria-label="Play voice reel" data-note="Her voice reel plays here on the live site."><i class="tri"></i></button><div><b>Voice reel</b><span class="bar" aria-hidden="true"></span></div><time>0:00</time></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="break">
+    <span class="ph"><img src="assets/still-keys.jpg" alt="Stand-in photograph."></span>
+    <div class="run d" aria-hidden="true"><span>Mimi of Lagos</span><span>Mimi of Lagos</span><span>Mimi of Lagos</span><span>Mimi of Lagos</span></div>
+  </div>
+
+  <section class="sec" id="press">
+    <div class="wrap">
+      <h2 class="d rv">Press</h2>
+      <div class="sec-body press rv">
+        <a href="https://www.thisdaylive.com/2026/10/09/i-have-the-looks-wit-and-drama-to-win-bbn-miracle-echeji/" target="_blank" rel="noopener">
+          <span class="w mut">ThisDay, 9 Oct 2026</span><b>&ldquo;I have the looks, wit and drama to win BBN&rdquo;</b><span class="w">Read</span></a>
+        <div class="slot"><span>Date</span><span>The next feature, interview or announcement. Posted from the admin, with no redesign.</span><span></span></div>
+        <div class="slot"><span>Year</span><span>An award or nomination, once there is one to list.</span><span></span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="partners" style="padding-top:0">
+    <div class="wrap pc rv">
+      <div>
+        <h2 class="d">Partners</h2>
+        <div class="logos"><div>Logo</div><div>Logo</div><div>Logo</div></div>
+        <p class="mut" style="margin-top:16px; max-width:40ch">Ambassador and campaign work goes through bookings.</p>
+      </div>
+      <div>
+        <h2 class="d">So far</h2>
+        <ol class="steps">
+          <li><span class="n d">1</span><div><b>Broadcasting</b><span class="mut">She starts on air and builds her presenting skills there.</span></div></li>
+          <li><span class="n d">2</span><div><b>Film</b><span class="mut">Someone Like You, Just A Friend, Compliance.</span></div></li>
+          <li><span class="n d">3</span><div><b>Once Upon A Village</b><span class="mut">A named role, as Ozege.</span></div></li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="booking" style="padding-top:0">
+    <div class="wrap">
+      <div class="book rv">
+        <div>
+          <h2 class="d">Booking &amp; inquiries</h2>
+          <div class="mail"><code id="mailAddr">bookings@miracleecheji.com</code><button class="btn copy" type="button" id="copyBtn">Copy</button></div>
+          <dl>
+            <div><dt class="w mut">Representation, sample</dt><dd>Ngozi Adeyemi-Clarke, Lantern Talent Management, Lagos. casting@lanterntalent.example</dd></div>
+            <div><dt class="w mut">Privacy</dt><dd>No personal phone number or home address is published on this site.</dd></div>
+            <div>
+              <dt class="w mut">Follow</dt>
+              <dd>
+                <div class="social" style="margin-top:8px">
+                  <a href="https://www.instagram.com/mimi_echeji/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-ig"/></svg></a>
+                  <a href="https://www.youtube.com/@miracleecheji" target="_blank" rel="noopener" aria-label="YouTube"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-yt"/></svg></a>
+                  <a href="https://www.facebook.com/miracle.echeji/" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-fb"/></svg></a>
+                </div>
+                <div class="profiles">
+                  <a href="https://nollywire.com/names/miracle-echeji" target="_blank" rel="noopener">Nollywire</a>
+                  <a href="https://ng.linkedin.com/in/miracle-emmanuella-echeji-822371218" target="_blank" rel="noopener">LinkedIn</a>
+                </div>
+              </dd>
+            </div>
+          </dl>
+        </div>
+        <form id="bookForm" novalidate>
+          <div class="field"><label class="w mut" for="bk-name">Your name</label><input id="bk-name" name="name" type="text" autocomplete="name"></div>
+          <div class="field"><label class="w mut" for="bk-email">Email</label><input id="bk-email" name="email" type="email" autocomplete="email"></div>
+          <div class="field"><label class="w mut" for="bk-type">Inquiry type</label>
+            <select id="bk-type" name="type"><option>Casting</option><option>Brand partnership</option><option>Press</option><option>Appearance or hosting</option></select></div>
+          <div class="field"><label class="w mut" for="bk-msg">Message</label><textarea id="bk-msg" name="message"></textarea></div>
+          <div><button class="btn btn-fill" type="submit">Send inquiry</button></div>
+          <p class="status" id="formNote" role="status"></p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <div class="social">
+      <a href="https://www.instagram.com/mimi_echeji/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-ig"/></svg></a>
+      <a href="https://www.youtube.com/@miracleecheji" target="_blank" rel="noopener" aria-label="YouTube"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-yt"/></svg></a>
+      <a href="https://www.facebook.com/miracle.echeji/" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-fb"/></svg></a>
+      <a href="https://nollywire.com/names/miracle-echeji" target="_blank" rel="noopener" aria-label="Nollywire" style="width:auto;padding:0 18px;border-radius:999px;font:700 .72rem var(--text);letter-spacing:.07em;text-transform:uppercase">Nollywire</a>
+    </div>
+    <span class="mut" style="align-self:center; font-size:.86rem">Concept C, Marquee. For review only.</span>
+  </div>
+  <div class="mark d" data-fit aria-hidden="true"><span class="fit">Miracle Echeji</span></div>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(function(){
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var hasIO = 'IntersectionObserver' in window;
+
+  // Size the name so it runs exactly edge to edge, on any screen.
+  var fitted = [].slice.call(document.querySelectorAll('[data-fit]'));
+  function fit(){
+    fitted.forEach(function(el){
+      var inner = el.querySelector('.fit'), cs = getComputedStyle(el);
+      var room = el.clientWidth - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight);
+      el.style.fontSize = '100px';
+      var w = inner.getBoundingClientRect().width;
+      if(w > 0 && room > 0){ el.style.fontSize = (100 * room / w * 0.995) + 'px'; }
+    });
+  }
+  fit();
+  if(document.fonts && document.fonts.ready){ document.fonts.ready.then(fit); }
+  window.addEventListener('resize', fit);
+
+  // Nav turns solid as soon as the page starts to scroll.
+  var nav = document.getElementById('nav'), sentinel = document.getElementById('sentinel');
+  if(hasIO){ new IntersectionObserver(function(en){ nav.classList.toggle('solid', !en[0].isIntersecting); }).observe(sentinel); }
+
+  // Scroll reveal. Content is visible by default and only hidden once the observer is ready.
+  if(!reduce && hasIO){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, {threshold:.08, rootMargin:'0px 0px -6% 0px'});
+    [].forEach.call(document.querySelectorAll('.rv'), function(el){
+      if(el.getBoundingClientRect().top > window.innerHeight){ el.classList.add('pre'); io.observe(el); }
+    });
+  }
+
+  // Each video loads its real YouTube player only once it is clicked.
+  [].forEach.call(document.querySelectorAll('.vid[data-yt]'), function(btn){
+    btn.addEventListener('click', function(){
+      var id = btn.getAttribute('data-yt');
+      if(!id || btn.querySelector('iframe')) return;
+      var f = document.createElement('iframe');
+      f.src = 'https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&rel=0&modestbranding=1';
+      f.title = btn.getAttribute('aria-label') || 'Video';
+      f.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+      f.setAttribute('allowfullscreen','');
+      btn.appendChild(f);
+    });
+  });
+
+  // Concept notes for controls that need the live site.
+  var toast = document.getElementById('toast'), timer;
+  function say(msg){ toast.textContent = msg; toast.classList.add('on'); clearTimeout(timer); timer = setTimeout(function(){ toast.classList.remove('on'); }, 3200); }
+  [].forEach.call(document.querySelectorAll('[data-note]'), function(el){
+    el.addEventListener('click', function(ev){ ev.preventDefault(); say(el.getAttribute('data-note')); });
+  });
+
+  // Copy the booking address.
+  var copyBtn = document.getElementById('copyBtn'), addr = document.getElementById('mailAddr');
+  copyBtn.addEventListener('click', function(){
+    var done = function(){ copyBtn.textContent = 'Copied'; setTimeout(function(){ copyBtn.textContent = 'Copy'; }, 1800); };
+    var select = function(){ var r = document.createRange(); r.selectNodeContents(addr); var s = getSelection(); s.removeAllRanges(); s.addRange(r); };
+    if(navigator.clipboard && navigator.clipboard.writeText){ navigator.clipboard.writeText(addr.textContent).then(done, select); } else { select(); }
+  });
+
+  // Booking form. No backend in the concept.
+  document.getElementById('bookForm').addEventListener('submit', function(ev){
+    ev.preventDefault();
+    document.getElementById('formNote').textContent = 'Concept only. On the live site this reaches Miracle and her team.';
+  });
+})();
+</script>
+</body>
+</html>
