@@ -7,26 +7,27 @@
 <title>Miracle Echeji</title>
 
 <!--
-  DESIGN CONCEPT D, "CASTING", for review only.
+  DESIGN CONCEPT D, "DAYLIGHT", for review only.
 
-  This one is built literally to Miracle's own brief:
-    "Stick to a minimalist aesthetic: white, gray, or black backgrounds with
-     clear fonts. Ensures your face and your footage remain the main focus
-     instead of distracting web design."
-  So the page is white, the type is black, and the photographs are left in
-  full colour and ungraded. Her face is the only colour on the page.
+  Miracle's brief asks for a minimalist white, grey or black page with clear
+  fonts, "so your face and your footage remain the main focus instead of
+  distracting web design". The first attempt at this took her literally and
+  produced a CV: boxed headshot, a table of facts, a bordered résumé.
 
-  It also answers the line she highlighted herself: casting should be able to
-  evaluate her "in under 3 seconds without forcing them to hunt". Everything
-  that matters sits in the first screen: headshot, footage, logline,
-  representation, résumé and a way to book her.
+  This one keeps the white ground and throws away the document. Her name is
+  set at the scale a title card uses, every photograph and every piece of film
+  artwork bleeds to the edge of the screen, and there is not a single box or
+  hairline rule around an image. The page is white so the work is loud.
 
-  TO SWAP IN HER REAL SHOWREEL:
-  find  data-yt="T1VItagIymk"  below and replace the id with the one from her
-  reel's YouTube link. In https://www.youtube.com/watch?v=ABC123 it is ABC123.
-  Then change the label "The Truth Podcast" next to it to "Showreel".
+  Nothing real is ever tinted. Stand-in photographs are greyed, her own
+  photograph and the film artwork are left exactly as they are, so the real
+  material is the only colour on the page.
 
-  TO SWAP IN HER REAL PHOTOGRAPHS:
+  TO SWAP IN HER REAL SHOWREEL
+  find  data-yt="T1VItagIymk"  and replace the id with the one from her reel.
+  In https://www.youtube.com/watch?v=ABC123 the id is ABC123.
+
+  TO SWAP IN HER REAL PHOTOGRAPHS
   replace the files in assets/, keeping the same names. See READ-ME-FIRST.txt.
 -->
 
@@ -38,399 +39,374 @@
     src:url(assets/fonts/geist-latin-ext.woff2) format('woff2');
     unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C4,U+2113,U+2C60-2C7F,U+A720-A7FF}
 
-  /* Layout concept: a casting document, not a poster. Paper white, ink black,
-     one hairline grey. No tint on any photograph. The first screen carries
-     headshot, footage, logline, representation, résumé and booking at once. */
+  /* Layout concept: a white gallery. Her name at title-card scale, every image
+     bleeding to the edge, no boxes, almost no words. */
   :root{
     --paper:#FFFFFF;
-    --ink:#111111;
-    --ink-2:#5A5A5A;
-    --rule:#E2E2E2;
-    --wash:#F6F6F6;
+    --ink:#0A0A0A;
+    --soft:#6B6B6B;
+    --side:max(20px,4.5vw);
     --f:'Geist',-apple-system,"Segoe UI",Helvetica,Arial,sans-serif;
-    --side:max(20px,4vw);
     color-scheme:light;
   }
   *{box-sizing:border-box}
   html{scroll-behavior:smooth}
   body{margin:0; background:var(--paper); color:var(--ink); font-family:var(--f);
-    font-size:1rem; line-height:1.55; -webkit-font-smoothing:antialiased; overflow-x:hidden}
+    font-size:1.0625rem; line-height:1.5; -webkit-font-smoothing:antialiased; overflow-x:hidden}
   ::selection{background:var(--ink); color:var(--paper)}
-  h1,h2,h3,p,figure,dl,dd,ul,ol{margin:0}
+  h1,h2,h3,p,figure,ul,ol{margin:0}
   ul,ol{padding:0; list-style:none}
   a{color:inherit; text-decoration:none}
-  img{max-width:100%; display:block}
-  :focus-visible{outline:2px solid var(--ink); outline-offset:3px}
-  section{scroll-margin-top:70px}
-  .wrap{width:100%; max-width:1280px; margin-inline:auto; padding-inline:var(--side)}
-  .lbl{font-size:.68rem; font-weight:600; letter-spacing:.11em; text-transform:uppercase; color:var(--ink-2)}
-  .mut{color:var(--ink-2)}
-  .tbc{color:var(--ink-2); font-style:italic}
+  img{display:block; max-width:100%}
+  :focus-visible{outline:2px solid var(--ink); outline-offset:4px}
+  section{scroll-margin-top:64px}
 
-  .chip{margin:0; padding-block:9px; text-align:center; font-size:.78rem; color:var(--ink-2); background:var(--wash); border-bottom:1px solid var(--rule)}
+  .pad{padding-inline:var(--side)}
+  .lbl{font-size:.7rem; font-weight:600; letter-spacing:.14em; text-transform:uppercase; color:var(--soft)}
+  .soft{color:var(--soft)}
 
-  /* buttons: black fill for the one action that matters, hairline for the rest */
-  .btn{display:inline-flex; align-items:center; justify-content:center; gap:9px; min-height:48px; padding:0 22px;
-    cursor:pointer; white-space:nowrap; font-family:var(--f); font-weight:600; font-size:.9rem;
-    border:1px solid var(--ink); background:var(--paper); color:var(--ink); border-radius:2px;
-    transition:background .18s,color .18s,transform .1s}
-  .btn:hover{background:var(--ink); color:var(--paper)}
+  /* stand-ins are greyed; her own photographs and the film artwork never are */
+  .standin{filter:grayscale(1) contrast(1.03)}
+
+  .chip{margin:0; padding-block:9px; text-align:center; font-size:.78rem; color:var(--soft)}
+
+  /* nav: a thin line of text, nothing more */
+  .nav{position:sticky; top:0; z-index:40; background:rgba(255,255,255,.92);
+    -webkit-backdrop-filter:blur(10px); backdrop-filter:blur(10px)}
+  .nav-in{display:flex; align-items:center; justify-content:space-between; gap:16px; min-height:60px}
+  .brand{font-weight:600; letter-spacing:-.015em; white-space:nowrap}
+  .links{display:flex; gap:26px}
+  .links a{display:inline-flex; align-items:center; min-height:44px; font-size:.95rem; color:var(--soft); transition:color .15s}
+  .links a:hover{color:var(--ink)}
+  @media(max-width:860px){.links{display:none}}
+
+  .btn{display:inline-flex; align-items:center; justify-content:center; gap:9px; min-height:50px; padding:0 26px;
+    cursor:pointer; white-space:nowrap; font-family:var(--f); font-weight:600; font-size:.95rem;
+    background:var(--ink); color:var(--paper); border:1px solid var(--ink); border-radius:999px;
+    transition:opacity .18s,transform .1s}
+  .btn:hover{opacity:.82}
   .btn:active{transform:translateY(1px)}
-  .btn-solid{background:var(--ink); color:var(--paper)}
-  .btn-solid:hover{background:#000}
+  .btn-line{background:transparent; color:var(--ink)}
+  .btn-line:hover{background:var(--ink); color:var(--paper); opacity:1}
+  .nav .btn{min-height:42px; padding:0 20px; font-size:.88rem}
   .tri{width:0;height:0;border-style:solid;border-width:5px 0 5px 9px;border-color:transparent transparent transparent currentColor}
 
-  /* nav */
-  .nav{position:sticky; top:0; z-index:30; background:rgba(255,255,255,.94);
-    -webkit-backdrop-filter:blur(10px); backdrop-filter:blur(10px); border-bottom:1px solid var(--rule)}
-  .nav-in{display:flex; align-items:center; justify-content:space-between; gap:16px; min-height:62px}
-  .brand{font-weight:600; letter-spacing:-.01em; white-space:nowrap}
-  .links{display:flex; gap:4px}
-  .links a{display:inline-flex; align-items:center; min-height:44px; padding:0 12px; font-size:.92rem; color:var(--ink-2); transition:color .15s}
-  .links a:hover{color:var(--ink)}
-  .nav .btn{min-height:40px; padding:0 16px; font-size:.84rem}
-  @media(max-width:900px){.links{display:none}}
+  /* ---------- the name, at title-card scale ---------- */
+  .open{padding-top:clamp(14px,2vw,30px)}
+  .name{font-weight:700; letter-spacing:-.045em; line-height:.84; font-size:clamp(3.1rem,13.2vw,12rem); text-transform:uppercase}
+  .under{display:flex; flex-wrap:wrap; align-items:baseline; justify-content:space-between; gap:10px 30px;
+    margin-top:clamp(12px,1.6vw,20px)}
+  .under p{font-size:clamp(1.05rem,1.7vw,1.4rem)}
 
-  /* ---- the first screen: everything a casting director needs at once ---- */
-  .top{padding-block:clamp(20px,3vw,34px) clamp(24px,4vw,44px)}
-  .grid{display:grid; grid-template-columns:minmax(0,320px) minmax(0,1fr); gap:clamp(18px,2.6vw,34px); align-items:start}
-  .shot{border:1px solid var(--rule)}
-  .shot img{width:100%; aspect-ratio:4/5; object-fit:cover}
-  .shot figcaption{padding:8px 10px; border-top:1px solid var(--rule)}
+  /* the lead photograph bleeds the full width of the screen */
+  .lead{margin-top:clamp(18px,3vw,38px); width:100%}
+  .lead img{width:100%; height:clamp(340px,62vh,680px); object-fit:cover; object-position:50% 28%}
+  .leadcap{display:flex; justify-content:space-between; gap:12px; padding-top:9px}
 
-  h1{font-size:clamp(2.3rem,5.4vw,3.9rem); line-height:1.02; letter-spacing:-.032em; font-weight:600}
-  .role{margin-top:10px; font-size:clamp(1rem,1.5vw,1.2rem); color:var(--ink-2)}
-  .facts{display:grid; grid-template-columns:repeat(auto-fit,minmax(130px,1fr)); gap:1px; margin-top:18px;
-    background:var(--rule); border:1px solid var(--rule)}
-  .facts > div{background:var(--paper); padding:10px 12px}
-  .facts dd{margin-top:2px; font-weight:600; font-size:.98rem}
+  .acts{display:flex; flex-wrap:wrap; gap:12px; margin-top:clamp(18px,2.4vw,28px)}
 
-  .player{position:relative; width:100%; aspect-ratio:16/9; border:1px solid var(--rule); background:#000;
-    padding:0; cursor:pointer; display:block; overflow:hidden}
-  .player img{width:100%; height:100%; object-fit:cover; opacity:.92; transition:opacity .2s}
-  .player:hover img{opacity:1}
-  .player .play{position:absolute; inset:0; display:grid; place-items:center}
-  .player .play span{width:66px; height:66px; border-radius:50%; background:rgba(255,255,255,.94); color:var(--ink);
-    display:grid; place-items:center; transition:transform .25s}
-  .player .play span .tri{border-width:9px 0 9px 15px; margin-left:4px}
-  .player:hover .play span{transform:scale(1.08)}
-  .player .tag{position:absolute; left:0; bottom:0; background:var(--paper); color:var(--ink);
-    padding:7px 12px; border-top:1px solid var(--rule); border-right:1px solid var(--rule)}
-  .player iframe{position:absolute; inset:0; width:100%; height:100%; border:0}
-  .vnote{margin-top:8px}
+  /* ---------- sections ---------- */
+  .sec{padding-block:clamp(48px,8vw,118px)}
+  .sec h2{font-weight:700; letter-spacing:-.035em; line-height:.92; font-size:clamp(2.1rem,7vw,5.4rem); text-transform:uppercase}
+  .sub{margin-top:12px; max-width:50ch; font-size:clamp(1rem,1.4vw,1.2rem); color:var(--soft)}
 
-  .book{display:grid; grid-template-columns:1fr 1fr; gap:1px; margin-top:16px; background:var(--rule); border:1px solid var(--rule)}
-  .book > div{background:var(--paper); padding:14px 16px}
-  .book .who{font-weight:600; margin-top:3px}
-  .book a.mail{display:inline-block; margin-top:3px; border-bottom:1px solid var(--ink); font-weight:600; overflow-wrap:anywhere}
-  .acts{display:flex; flex-wrap:wrap; gap:10px; margin-top:16px}
-  @media(max-width:860px){
-    .grid{grid-template-columns:1fr}
-    .shot{max-width:300px}
-    .book{grid-template-columns:1fr}
-  }
-
-  /* ---- sections ---- */
-  .sec{padding-block:clamp(40px,6vw,76px); border-top:1px solid var(--rule)}
-  .sec-head{display:flex; align-items:baseline; justify-content:space-between; gap:14px; flex-wrap:wrap; margin-bottom:clamp(16px,2.4vw,26px)}
-  .sec h2{font-size:clamp(1.3rem,2.4vw,1.9rem); font-weight:600; letter-spacing:-.02em}
-
-  /* on screen: the work itself, in full colour, scrolled sideways.
-     Nollywood streaming art is 16:9, not a cinema poster, so the cards are too. */
-  .rail{display:grid; grid-auto-flow:column; grid-auto-columns:minmax(290px,420px); gap:clamp(12px,1.5vw,20px);
-    overflow-x:auto; scroll-snap-type:x proximity; padding-bottom:14px;
-    margin-inline:calc(var(--side) * -1); padding-inline:var(--side); scrollbar-width:thin}
-  .work{scroll-snap-align:start; border:1px solid var(--rule); background:var(--paper); display:flex; flex-direction:column}
+  /* the work, bleeding off the right edge so it reads as a reel */
+  .rail{display:grid; grid-auto-flow:column; grid-auto-columns:minmax(300px,46vw);
+    gap:clamp(12px,1.8vw,26px); overflow-x:auto; scroll-snap-type:x proximity;
+    margin-top:clamp(22px,3.4vw,44px); padding-inline:var(--side);
+    padding-bottom:12px; scrollbar-width:thin}
+  .work{scroll-snap-align:start}
   .art{position:relative; display:block; width:100%; padding:0; border:0; background:#000; cursor:pointer; overflow:hidden}
-  .art img{width:100%; aspect-ratio:16/9; object-fit:cover; transition:transform .4s cubic-bezier(.16,1,.3,1)}
+  .art img{width:100%; aspect-ratio:16/9; object-fit:cover; transition:transform .5s cubic-bezier(.16,1,.3,1)}
   .work:hover .art img{transform:scale(1.03)}
-  .art .go{position:absolute; left:10px; bottom:10px; width:44px; height:44px; border-radius:50%;
+  .art .go{position:absolute; left:14px; bottom:14px; width:54px; height:54px; border-radius:50%;
     background:rgba(255,255,255,.95); color:var(--ink); display:grid; place-items:center; transition:transform .25s}
-  .art .go .tri{border-width:7px 0 7px 12px; margin-left:3px}
+  .art .go .tri{border-width:8px 0 8px 14px; margin-left:3px}
   .work:hover .art .go{transform:scale(1.1)}
   .art iframe{position:absolute; inset:0; width:100%; height:100%; border:0}
-  .work .meta{padding:11px 13px; border-top:1px solid var(--rule)}
-  .work .meta b{display:block; font-weight:600; font-size:1.02rem}
-  .work .meta span{display:block; margin-top:2px}
-  .railnote{margin-top:10px}
+  .work .cap{display:flex; justify-content:space-between; gap:14px; padding-top:10px}
+  .work .cap b{font-weight:600; font-size:1.05rem}
 
-  /* photographs: 4 headshots, then a small separate row of stills */
-  .looks{display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:clamp(10px,1.4vw,18px)}
-  .looks figure{border:1px solid var(--rule)}
-  .looks img{width:100%; aspect-ratio:4/5; object-fit:cover}
-  .looks figcaption{padding:8px 10px; border-top:1px solid var(--rule)}
-  .stills{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:clamp(10px,1.4vw,18px); margin-top:clamp(14px,2vw,22px); max-width:760px}
-  .stills figure{border:1px solid var(--rule)}
-  .stills img{width:100%; aspect-ratio:3/2; object-fit:cover}
-  .stills figcaption{padding:8px 10px; border-top:1px solid var(--rule)}
-  @media(max-width:760px){.looks{grid-template-columns:repeat(2,minmax(0,1fr))}}
+  /* photographs, edge to edge, no frames */
+  .shots{display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:clamp(8px,1.1vw,16px);
+    margin-top:clamp(22px,3.4vw,44px)}
+  .shots img{width:100%; aspect-ratio:4/5; object-fit:cover}
+  .shots figcaption{padding-top:8px}
+  .wide{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:clamp(8px,1.1vw,16px); margin-top:clamp(8px,1.1vw,16px)}
+  .wide img{width:100%; aspect-ratio:16/9; object-fit:cover}
+  @media(max-width:760px){.shots{grid-template-columns:repeat(2,minmax(0,1fr))} .wide{grid-template-columns:1fr}}
 
-  /* résumé */
-  .res{border:1px solid var(--rule)}
-  .res .cat{padding:9px 14px; background:var(--wash); border-bottom:1px solid var(--rule)}
-  .res .cat + .row{border-top:0}
-  .row{display:grid; grid-template-columns:minmax(0,2.1fr) minmax(0,1fr) minmax(0,1.3fr); gap:6px 16px;
-    padding:12px 14px; border-top:1px solid var(--rule)}
-  .row b{font-weight:600}
-  .row:hover{background:var(--wash)}
-  .none{padding:12px 14px; border-top:1px solid var(--rule)}
-  .skills{display:flex; flex-wrap:wrap; gap:7px; margin-top:10px}
-  .skills li{border:1px solid var(--rule); padding:5px 11px; font-size:.9rem}
-  .skills li.slot{border-style:dashed; color:var(--ink-2); font-style:italic}
-  @media(max-width:700px){
-    .row{grid-template-columns:1fr}
-    .row span[data-l]::before{content:attr(data-l) " "; font-size:.68rem; font-weight:600; letter-spacing:.11em; text-transform:uppercase; color:var(--ink-2)}
-  }
+  /* the reel, full width */
+  .reel{position:relative; display:block; width:100%; padding:0; border:0; background:#000; cursor:pointer;
+    overflow:hidden; margin-top:clamp(22px,3.4vw,44px)}
+  .reel img{width:100%; aspect-ratio:16/9; object-fit:cover; opacity:.95; transition:opacity .25s}
+  .reel:hover img{opacity:1}
+  .reel .go{position:absolute; inset:0; display:grid; place-items:center}
+  .reel .go span{width:clamp(72px,8vw,112px); height:clamp(72px,8vw,112px); border-radius:50%;
+    background:rgba(255,255,255,.95); color:var(--ink); display:grid; place-items:center; transition:transform .25s}
+  .reel .go span .tri{border-width:12px 0 12px 20px; margin-left:5px}
+  .reel:hover .go span{transform:scale(1.07)}
+  .reel iframe{position:absolute; inset:0; width:100%; height:100%; border:0}
+
+  /* credits, as type rather than a table */
+  .cred{margin-top:clamp(22px,3.4vw,44px)}
+  .cred li{display:grid; grid-template-columns:minmax(0,1fr) auto; gap:4px 24px; align-items:baseline;
+    padding-block:clamp(13px,1.5vw,20px); border-top:1px solid #ECECEC}
+  .cred li:last-child{border-bottom:1px solid #ECECEC}
+  .cred .t{font-weight:600; letter-spacing:-.025em; font-size:clamp(1.35rem,3.4vw,2.6rem); line-height:1.08}
+  .cred .r{text-align:right; color:var(--soft)}
+  .group{margin-top:clamp(26px,3.4vw,44px)}
+  .skills{display:flex; flex-wrap:wrap; gap:8px; margin-top:12px}
+  .skills li{border:1px solid #E6E6E6; border-radius:999px; padding:7px 15px; font-size:.95rem}
+  .skills li.slot{border-style:dashed; color:var(--soft); font-style:italic}
+  @media(max-width:620px){.cred li{grid-template-columns:1fr} .cred .r{text-align:left}}
 
   /* news */
-  .news a,.news .slot{display:grid; grid-template-columns:9.5rem minmax(0,1fr) auto; gap:4px 18px; align-items:baseline;
-    padding:13px 0; border-top:1px solid var(--rule)}
-  .news a b{font-weight:600}
-  .news a:hover b{text-decoration:underline; text-underline-offset:3px}
-  .news .slot{color:var(--ink-2); font-style:italic}
-  @media(max-width:700px){.news a,.news .slot{grid-template-columns:1fr}}
+  .news li{display:grid; grid-template-columns:9.5rem minmax(0,1fr) auto; gap:4px 20px; align-items:baseline;
+    padding-block:clamp(13px,1.5vw,20px); border-top:1px solid #ECECEC}
+  .news li:last-child{border-bottom:1px solid #ECECEC}
+  .news b{font-weight:600; font-size:clamp(1rem,1.5vw,1.2rem)}
+  .news a:hover b{text-decoration:underline; text-underline-offset:4px}
+  @media(max-width:620px){.news li{grid-template-columns:1fr}}
 
   /* contact */
-  .contact{display:grid; grid-template-columns:1fr 1fr; gap:clamp(22px,4vw,56px)}
-  .contact dl{display:grid; gap:16px}
-  .contact dd{margin-top:3px; max-width:42ch}
-  form{display:grid; gap:12px}
-  .field{display:grid; gap:5px}
-  .field input,.field select,.field textarea{width:100%; min-height:46px; padding:10px 12px; font:400 1rem var(--f);
-    color:var(--ink); background:var(--paper); border:1px solid var(--rule); border-radius:2px}
-  .field textarea{min-height:110px; resize:vertical}
-  .field input:focus,.field select:focus,.field textarea:focus{outline:none; border-color:var(--ink)}
+  .contact{display:grid; grid-template-columns:1fr 1fr; gap:clamp(26px,5vw,80px); margin-top:clamp(22px,3.4vw,44px); align-items:start}
+  .blocks{display:grid; gap:24px}
+  .blocks b{display:block; font-weight:600; font-size:1.1rem; margin-top:3px}
+  .mailbig{display:inline-block; font-weight:600; font-size:clamp(1.1rem,2vw,1.6rem); letter-spacing:-.02em;
+    border-bottom:2px solid var(--ink); overflow-wrap:anywhere}
+  form{display:grid; gap:14px}
+  .field{display:grid; gap:6px}
+  .field input,.field select,.field textarea{width:100%; min-height:50px; padding:12px 0; font:400 1rem var(--f);
+    color:var(--ink); background:transparent; border:0; border-bottom:1px solid #DADADA; border-radius:0}
+  .field textarea{min-height:92px; resize:vertical}
+  .field input:focus,.field select:focus,.field textarea:focus{outline:none; border-bottom-color:var(--ink)}
   .status{min-height:1.4em; font-weight:600}
-  .social{display:flex; flex-wrap:wrap; gap:8px; margin-top:8px}
-  .social a{width:44px; height:44px; border:1px solid var(--rule); display:grid; place-items:center; color:var(--ink);
-    transition:background .18s,color .18s,border-color .18s}
+  .social{display:flex; flex-wrap:wrap; gap:10px; margin-top:10px}
+  .social a{width:46px; height:46px; border:1px solid #E2E2E2; border-radius:999px; display:grid; place-items:center;
+    color:var(--ink); transition:background .18s,color .18s,border-color .18s}
   .social a:hover{background:var(--ink); color:var(--paper); border-color:var(--ink)}
   .social svg{width:17px; height:17px; fill:currentColor}
-  .social a.txt{width:auto; padding:0 14px; font-size:.84rem; font-weight:600}
+  .social a.txt{width:auto; padding:0 16px; font-size:.86rem; font-weight:600}
   @media(max-width:860px){.contact{grid-template-columns:1fr}}
 
-  footer{border-top:1px solid var(--rule); padding-block:26px}
-  .foot{display:flex; flex-wrap:wrap; justify-content:space-between; gap:10px 24px; font-size:.86rem; color:var(--ink-2)}
+  footer{padding-block:28px clamp(30px,5vw,60px)}
+  .foot{display:flex; flex-wrap:wrap; justify-content:space-between; gap:10px 24px; font-size:.86rem; color:var(--soft)}
 
-  .toast{position:fixed; z-index:60; left:50%; bottom:20px; transform:translate(-50%,10px); opacity:0; pointer-events:none;
-    width:max-content; max-width:min(90vw,440px); background:var(--ink); color:var(--paper); padding:11px 15px;
-    font-size:.92rem; border-radius:2px; transition:opacity .2s,transform .2s}
+  .toast{position:fixed; z-index:60; left:50%; bottom:22px; transform:translate(-50%,10px); opacity:0; pointer-events:none;
+    width:max-content; max-width:min(90vw,440px); background:var(--ink); color:var(--paper); padding:12px 16px;
+    font-size:.92rem; border-radius:999px; transition:opacity .2s,transform .2s}
   .toast.on{opacity:1; transform:translate(-50%,0)}
 
+  @media(prefers-reduced-motion:no-preference){
+    .name{animation:rise .9s cubic-bezier(.16,1,.3,1) both}
+    .lead img{animation:settle 1.5s cubic-bezier(.16,1,.3,1) both}
+    @keyframes rise{from{opacity:0; transform:translateY(22px)}}
+    @keyframes settle{from{transform:scale(1.05)}}
+  }
   @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 </style>
 </head>
 <body>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
-<symbol id="i-ig" viewBox="0 0 24 24"><path d="M7.0301.084c-1.2768.0602-2.1487.264-2.911.5634-.7888.3075-1.4575.72-2.1228 1.3877-.6652.6677-1.075 1.3368-1.3802 2.127-.2954.7638-.4956 1.6365-.552 2.914-.0564 1.2775-.0689 1.6882-.0626 4.947.0062 3.2586.0206 3.6671.0825 4.9473.061 1.2765.264 2.1482.5635 2.9107.3077.7889.72 1.4573 1.388 2.1228.6679.6655 1.3365 1.0743 2.1285 1.38.7632.2951 1.6361.4961 2.9134.552 1.2773.056 1.6884.069 4.9462.0627 3.2578-.0062 3.668-.0207 4.9478-.0814 1.2797-.0607 2.1469-.2652 2.9098-.5633.7889-.3086 1.4578-.72 2.1228-1.3881.665-.6682 1.0745-1.3378 1.3795-2.1284.2957-.7632.4966-1.636.552-2.9124.0556-1.2809.0691-1.6898.0629-4.9478-.0063-3.258-.0208-3.6668-.0815-4.9466-.0606-1.2798-.264-2.1478-.5633-2.9113-.3084-.7889-.72-1.4572-1.3877-2.1228C21.2982 1.33 20.628.9208 19.8378.6165 19.074.321 18.2017.1197 16.9244.0645 15.6471.0093 15.236-.005 11.977.0014 8.718.0076 8.31.0215 7.0301.0839m.1402 21.6932c-1.17-.0509-1.8053-.2453-2.2287-.4074-.5606-.216-.96-.4784-1.3819-.8942-.422-.4157-.6823-.8161-.9-1.3754-.1644-.4234-.3623-1.058-.4171-2.228-.0595-1.2645-.072-1.6442-.079-4.848-.0063-3.2037.0053-3.583.0607-4.848.05-1.169.2456-1.805.4075-2.2282.216-.5613.4762-.96.8921-1.3816.4158-.4217.8163-.6819 1.3579-.9.4232-.1673 1.0578-.3623 2.227-.4175 1.2655-.06 1.6447-.072 4.848-.079 3.2033-.0068 3.5835.0051 4.8495.0607 1.169.0508 1.8053.2445 2.228.4075.5608.216.96.4754 1.3816.8920.4216.4166.6815.8160.9001 1.3579.1676.4219.3623 1.0564.4174 2.228.0600 1.2655.0734 1.645.0795 4.848.0059 3.203-.0055 3.5834-.0608 4.848-.051 1.17-.245 1.8055-.4075 2.2294-.216.5604-.4765.96-.8924 1.3813-.4159.4214-.8162.6816-1.3578.8992-.4226.1676-1.0582.3626-2.2272.4177-1.2655.0591-1.6446.0724-4.8493.0792-3.2048.0068-3.5825-.006-4.848-.0607M16.953 5.5864A1.44 1.44 0 1 0 18.39 4.144a1.44 1.44 0 0 0-1.437 1.4424M5.8385 12.012c.0067 3.4032 2.7706 6.1557 6.1732 6.1493 3.4026-.0065 6.157-2.7701 6.1505-6.1733-.0065-3.4032-2.771-6.1565-6.174-6.1498-3.403.0067-6.1565 2.7708-6.1498 6.1738M8 12.0077a4 4 0 1 1 4.008 3.9921A3.9996 3.9996 0 0 1 8 12.0077"/></symbol>
+<symbol id="i-ig" viewBox="0 0 24 24"><path d="M7.0301.084c-1.2768.0602-2.1487.264-2.911.5634-.7888.3075-1.4575.72-2.1228 1.3877-.6652.6677-1.075 1.3368-1.3802 2.127-.2954.7638-.4956 1.6365-.552 2.914-.0564 1.2775-.0689 1.6882-.0626 4.947.0062 3.2586.0206 3.6671.0825 4.9473.061 1.2765.264 2.1482.5635 2.9107.3077.7889.72 1.4573 1.388 2.1228.6679.6655 1.3365 1.0743 2.1285 1.38.7632.2951 1.6361.4961 2.9134.552 1.2773.056 1.6884.069 4.9462.0627 3.2578-.0062 3.668-.0207 4.9478-.0814 1.2797-.0607 2.1469-.2652 2.9098-.5633.7889-.3086 1.4578-.72 2.1228-1.3881.665-.6682 1.0745-1.3378 1.3795-2.1284.2957-.7632.4966-1.636.552-2.9124.0556-1.2809.0691-1.6898.0629-4.9478-.0063-3.258-.0208-3.6668-.0815-4.9466-.0606-1.2798-.264-2.1478-.5633-2.9113-.3084-.7889-.72-1.4572-1.3877-2.1228C21.2982 1.33 20.628.9208 19.8378.6165 19.074.321 18.2017.1197 16.9244.0645 15.6471.0093 15.236-.005 11.977.0014 8.718.0076 8.31.0215 7.0301.0839m.1402 21.6932c-1.17-.0509-1.8053-.2453-2.2287-.4074-.5606-.216-.96-.4784-1.3819-.8942-.422-.4157-.6823-.8161-.9-1.3754-.1644-.4234-.3623-1.058-.4171-2.228-.0595-1.2645-.072-1.6442-.079-4.848-.0063-3.2037.0053-3.583.0607-4.848.05-1.169.2456-1.805.4075-2.2282.216-.5613.4762-.96.8921-1.3816.4158-.4217.8163-.6819 1.3579-.9.4232-.1673 1.0578-.3623 2.227-.4175 1.2655-.06 1.6447-.072 4.848-.079 3.2033-.0068 3.5835.0051 4.8495.0607 1.169.0508 1.8053.2445 2.228.4075.5608.216.96.4754 1.3816.892.4216.4166.6815.816.9001 1.3579.1676.4219.3623 1.0564.4174 2.228.06 1.2655.0734 1.645.0795 4.848.0059 3.203-.0055 3.5834-.0608 4.848-.051 1.17-.245 1.8055-.4075 2.2294-.216.5604-.4765.96-.8924 1.3813-.4159.4214-.8162.6816-1.3578.8992-.4226.1676-1.0582.3626-2.2272.4177-1.2655.0591-1.6446.0724-4.8493.0792-3.2048.0068-3.5825-.006-4.848-.0607M16.953 5.5864A1.44 1.44 0 1 0 18.39 4.144a1.44 1.44 0 0 0-1.437 1.4424M5.8385 12.012c.0067 3.4032 2.7706 6.1557 6.1732 6.1493 3.4026-.0065 6.157-2.7701 6.1505-6.1733-.0065-3.4032-2.771-6.1565-6.174-6.1498-3.403.0067-6.1565 2.7708-6.1498 6.1738M8 12.0077a4 4 0 1 1 4.008 3.9921A3.9996 3.9996 0 0 1 8 12.0077"/></symbol>
 <symbol id="i-yt" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></symbol>
 <symbol id="i-fb" viewBox="0 0 24 24"><path d="M9.101 23.691v-7.98H6.627v-3.667h2.474v-1.58c0-4.085 1.848-5.978 5.858-5.978.401 0 .955.042 1.468.103a8.68 8.68 0 0 1 1.141.195v3.325a8.623 8.623 0 0 0-.653-.036 26.805 26.805 0 0 0-.733-.009c-.707 0-1.259.096-1.675.309a1.686 1.686 0 0 0-.679.622c-.258.42-.374.995-.374 1.752v1.297h3.919l-.386 2.103-.287 1.564h-3.246v8.245C19.396 23.238 24 18.179 24 12.044c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.628 3.874 10.35 9.101 11.647Z"/></symbol>
 </svg>
 
-<p class="chip"><span class="wrap" style="display:block">Design concept D. Stand-in photographs, a sample agent and draft copy, for review.</span></p>
+<p class="chip pad">Design concept D. Stand-in photographs, a sample agent and draft copy, for review.</p>
 
 <header class="nav">
-  <div class="wrap nav-in">
+  <div class="nav-in pad">
     <a class="brand" href="#top">Miracle Echeji</a>
     <nav class="links" aria-label="Sections">
-      <a href="#onscreen">On screen</a>
+      <a href="#work">Work</a>
+      <a href="#reel">Reel</a>
       <a href="#photographs">Photographs</a>
-      <a href="#resume">Résumé</a>
-      <a href="#news">News</a>
+      <a href="#credits">Credits</a>
       <a href="#contact">Contact</a>
     </nav>
-    <a class="btn btn-solid" href="#contact">Booking</a>
+    <a class="btn" href="#contact">Booking</a>
   </div>
 </header>
 
 <main id="top">
 
-  <!-- Everything a casting director needs, in the first screen. -->
-  <section class="top">
-    <div class="wrap grid">
+  <section class="open">
+    <div class="pad">
+      <h1 class="name">Miracle<br>Echeji</h1>
+      <div class="under">
+        <p>Actress and broadcaster. Lagos, Nigeria.</p>
+        <p class="lbl">Known as Mimi of Lagos</p>
+      </div>
+    </div>
 
-      <figure class="shot">
-        <img src="assets/look-commercial.jpg" alt="Stand-in photograph. Your lead headshot goes here.">
-        <figcaption class="lbl">Stand-in headshot</figcaption>
-      </figure>
+    <figure class="lead">
+      <img class="standin" src="assets/look-commercial.jpg" alt="Stand-in photograph. Your lead portrait goes here.">
+      <figcaption class="leadcap pad">
+        <span class="lbl">Stand-in photograph</span>
+        <span class="lbl">Guild to confirm</span>
+      </figcaption>
+    </figure>
 
-      <div>
-        <h1>Miracle Echeji</h1>
-        <p class="role">Actress and broadcaster. Lagos, Nigeria.</p>
+    <div class="pad">
+      <div class="acts">
+        <a class="btn" href="#contact">Booking &amp; inquiries</a>
+        <a class="btn btn-line" href="#reel"><i class="tri"></i>Watch</a>
+        <a class="btn btn-line" href="https://nollywire.com/names/miracle-echeji" target="_blank" rel="noopener">Nollywire</a>
+      </div>
+    </div>
+  </section>
 
-        <dl class="facts">
-          <div><dt class="lbl">Known as</dt><dd>Mimi of Lagos</dd></div>
-          <div><dt class="lbl">Based in</dt><dd>Lagos, Nigeria</dd></div>
-          <div><dt class="lbl">Guild</dt><dd class="tbc">To confirm</dd></div>
-          <div><dt class="lbl">Languages</dt><dd class="tbc">To confirm</dd></div>
-        </dl>
-
-        <button class="player" type="button" data-yt="T1VItagIymk" aria-label="Play: The Truth Podcast" style="margin-top:16px">
-          <img src="assets/yt-T1VItagIymk.jpg" alt="">
-          <span class="play"><span><i class="tri"></i></span></span>
-          <span class="tag lbl">The Truth Podcast</span>
+  <section class="sec" id="work">
+    <div class="pad">
+      <h2>On screen</h2>
+      <p class="sub">Four titles with Ruth Kadiri Films. Scroll sideways.</p>
+    </div>
+    <div class="rail">
+      <article class="work">
+        <button class="art" type="button" data-yt="Di6QSgFoRoI" aria-label="Play: Once Upon A Village">
+          <img src="assets/art-once-upon-a-village.jpg" alt="Key art for Once Upon A Village">
+          <span class="go"><i class="tri"></i></span>
         </button>
-        <p class="vnote lbl">Showreel to come. This is her own podcast, playing here in place of it.</p>
+        <div class="cap"><b>Once Upon A Village</b><span class="lbl">Series &middot; as Ozege</span></div>
+      </article>
+      <article class="work">
+        <a class="art" href="https://nollywire.com/films/compliance" target="_blank" rel="noopener" aria-label="Compliance on Nollywire">
+          <img src="assets/art-compliance.jpg" alt="Key art for Compliance, billing Miracle Echeji">
+        </a>
+        <div class="cap"><b>Compliance</b><span class="lbl">2026 &middot; with Van Vicker</span></div>
+      </article>
+      <article class="work">
+        <button class="art" type="button" data-yt="n7SGWRA3HaI" aria-label="Play: Just A Friend">
+          <img src="assets/art-just-a-friend.jpg" alt="Key art for Just A Friend">
+          <span class="go"><i class="tri"></i></span>
+        </button>
+        <div class="cap"><b>Just A Friend</b><span class="lbl">with Maurice Sam</span></div>
+      </article>
+      <article class="work">
+        <a class="art" href="https://nollywire.com/films/to-find-a-wife" target="_blank" rel="noopener" aria-label="To Find A Wife on Nollywire">
+          <img src="assets/art-to-find-a-wife.jpg" alt="Key art for To Find A Wife">
+        </a>
+        <div class="cap"><b>To Find A Wife</b><span class="lbl">2026 &middot; Romance</span></div>
+      </article>
+    </div>
+  </section>
 
-        <div class="book">
-          <div>
-            <span class="lbl">Representation, sample</span>
-            <div class="who">Ngozi Adeyemi-Clarke</div>
-            <div class="mut">Lantern Talent Management, Lagos</div>
-            <a class="mail" href="#contact">casting@lanterntalent.example</a>
-          </div>
-          <div>
-            <span class="lbl">Bookings</span>
-            <a class="mail" href="#contact">bookings@miracleecheji.com</a>
-            <div class="mut" style="margin-top:6px">No personal phone number or home address is published.</div>
-          </div>
-        </div>
+  <section class="sec" id="reel" style="padding-top:0">
+    <div class="pad">
+      <h2>Reel</h2>
+      <p class="sub">The Truth Podcast, episode one.</p>
+    </div>
+    <button class="reel" type="button" data-yt="T1VItagIymk" aria-label="Play: The Truth Podcast">
+      <img src="assets/yt-T1VItagIymk.jpg" alt="">
+      <span class="go"><span><i class="tri"></i></span></span>
+    </button>
+  </section>
 
-        <div class="acts">
-          <a class="btn btn-solid" href="#contact">Booking &amp; inquiries</a>
-          <button class="btn" type="button" data-note="On the live site this downloads your résumé as a PDF.">Résumé (PDF)</button>
-          <a class="btn" href="https://nollywire.com/names/miracle-echeji" target="_blank" rel="noopener">Nollywire</a>
-        </div>
+  <section class="sec" id="photographs" style="padding-top:0">
+    <div class="pad">
+      <h2>Photographs</h2>
+      <div class="shots">
+        <figure>
+          <img src="assets/still-compliance.jpg" alt="Miracle Echeji in character in Compliance." style="object-position:50% 12%">
+          <figcaption class="lbl" style="color:var(--ink)">Compliance &middot; real still</figcaption>
+        </figure>
+        <figure><img class="standin" src="assets/look-warm.jpg" alt="Stand-in headshot."><figcaption class="lbl">Warm</figcaption></figure>
+        <figure><img class="standin" src="assets/look-presenter.jpg" alt="Stand-in headshot."><figcaption class="lbl">Presenter</figcaption></figure>
+        <figure><img class="standin" src="assets/look-character.jpg" alt="Stand-in headshot."><figcaption class="lbl">Character</figcaption></figure>
+      </div>
+      <div class="wide">
+        <figure><img class="standin" src="assets/still-air.jpg" alt="Stand-in production still."><figcaption class="lbl">On air</figcaption></figure>
+        <figure><img class="standin" src="assets/still-keys.jpg" alt="Stand-in production still."><figcaption class="lbl">In studio</figcaption></figure>
       </div>
     </div>
   </section>
 
-  <section class="sec" id="onscreen">
-    <div class="wrap">
-      <div class="sec-head"><h2>On screen</h2><span class="lbl">Scroll sideways</span></div>
-      <div class="rail">
+  <section class="sec" id="credits" style="padding-top:0">
+    <div class="pad">
+      <h2>Credits</h2>
+      <ul class="cred">
+        <li><span class="t">Compliance</span><span class="r">2026 &middot; Drama &middot; with Van Vicker</span></li>
+        <li><span class="t">To Find A Wife</span><span class="r">2026 &middot; Romance</span></li>
+        <li><span class="t">Once Upon A Village</span><span class="r">Series &middot; as Ozege</span></li>
+        <li><span class="t">Just A Friend</span><span class="r">Ruth Kadiri Films &middot; with Maurice Sam</span></li>
+        <li><span class="t">Someone Like You</span><span class="r">Role to confirm</span></li>
+      </ul>
 
-        <article class="work">
-          <button class="art" type="button" data-yt="Di6QSgFoRoI" aria-label="Play: Once Upon A Village">
-            <img src="assets/art-once-upon-a-village.jpg" alt="Key art for Once Upon A Village">
-            <span class="go"><i class="tri"></i></span>
-          </button>
-          <div class="meta"><b>Once Upon A Village</b><span class="mut">Series &middot; as Ozege &middot; Ruth Kadiri Films</span></div>
-        </article>
-
-        <article class="work">
-          <a class="art" href="https://nollywire.com/films/compliance" target="_blank" rel="noopener" aria-label="Compliance on Nollywire">
-            <img src="assets/art-compliance.jpg" alt="Key art for Compliance, billing Frances Nwabunike, Miracle Echeji and Van Vicker">
-          </a>
-          <div class="meta"><b>Compliance</b><span class="mut">2026 &middot; Drama &middot; with Van Vicker</span></div>
-        </article>
-
-        <article class="work">
-          <button class="art" type="button" data-yt="n7SGWRA3HaI" aria-label="Play: Just A Friend">
-            <img src="assets/art-just-a-friend.jpg" alt="Key art for Just A Friend">
-            <span class="go"><i class="tri"></i></span>
-          </button>
-          <div class="meta"><b>Just A Friend</b><span class="mut">Ruth Kadiri Films &middot; with Maurice Sam</span></div>
-        </article>
-
-        <article class="work">
-          <a class="art" href="https://nollywire.com/films/to-find-a-wife" target="_blank" rel="noopener" aria-label="To Find A Wife on Nollywire">
-            <img src="assets/art-to-find-a-wife.jpg" alt="Key art for To Find A Wife">
-          </a>
-          <div class="meta"><b>To Find A Wife</b><span class="mut">2026 &middot; Romance</span></div>
-        </article>
-
+      <div class="group">
+        <span class="lbl">Theatre</span>
+        <p class="soft" style="margin-top:6px">No credits listed yet.</p>
       </div>
-      <p class="railnote lbl">Artwork from Ruth Kadiri Films and Nollywire. Roles still to be confirmed with you.</p>
-    </div>
-  </section>
-
-  <section class="sec" id="photographs">
-    <div class="wrap">
-      <div class="sec-head"><h2>Photographs</h2><span class="lbl">Four looks, plus stills</span></div>
-      <div class="looks">
-        <figure><img src="assets/still-compliance.jpg" alt="Miracle Echeji in character in Compliance." style="object-position:50% 12%"><figcaption class="lbl" style="color:var(--ink)">Compliance &middot; real still</figcaption></figure>
-        <figure><img src="assets/look-warm.jpg" alt="Stand-in headshot."><figcaption class="lbl">Warm</figcaption></figure>
-        <figure><img src="assets/look-presenter.jpg" alt="Stand-in headshot."><figcaption class="lbl">Presenter</figcaption></figure>
-        <figure><img src="assets/look-character.jpg" alt="Stand-in headshot."><figcaption class="lbl">Character</figcaption></figure>
+      <div class="group">
+        <span class="lbl">Commercials and hosting</span>
+        <p class="soft" style="margin-top:6px">Your broadcast and presenting work goes here.</p>
       </div>
-      <div class="stills">
-        <figure><img src="assets/still-air.jpg" alt="Stand-in production still."><figcaption class="lbl">On air</figcaption></figure>
-        <figure><img src="assets/still-keys.jpg" alt="Stand-in production still."><figcaption class="lbl">In studio</figcaption></figure>
-      </div>
-    </div>
-  </section>
-
-  <section class="sec" id="resume">
-    <div class="wrap">
-      <div class="sec-head">
-        <h2>Résumé</h2>
-        <button class="btn" type="button" data-note="On the live site this downloads your résumé as a PDF.">Download PDF</button>
-      </div>
-      <div class="res">
-        <div class="cat lbl">Film and television</div>
-        <div class="row"><b>Compliance</b><span data-l="Year">2026 · Drama</span><span data-l="With" class="mut">with Van Vicker</span></div>
-        <div class="row"><b>To Find A Wife</b><span data-l="Year">2026 · Romance</span><span data-l="With" class="mut tbc">to confirm</span></div>
-        <div class="row"><b>Once Upon A Village</b><span data-l="Role">as Ozege</span><span data-l="With" class="mut tbc">to confirm</span></div>
-        <div class="row"><b>Just A Friend</b><span data-l="Year" class="mut">by Ruth Kadiri</span><span data-l="With" class="mut">with Maurice Sam</span></div>
-        <div class="row"><b>Someone Like You</b><span data-l="Role" class="tbc">role to confirm</span><span data-l="With" class="mut tbc">to confirm</span></div>
-        <div class="cat lbl">Theatre</div>
-        <p class="none tbc">No credits listed yet.</p>
-        <div class="cat lbl">Commercials and hosting</div>
-        <p class="none tbc">Your broadcast and presenting work goes here.</p>
-      </div>
-      <div style="margin-top:18px">
+      <div class="group">
         <span class="lbl">Special skills</span>
         <ul class="skills">
           <li>Presenting</li><li>Broadcast hosting</li>
           <li class="slot">Languages to add</li><li class="slot">Dialects to add</li>
         </ul>
       </div>
-    </div>
-  </section>
-
-  <section class="sec" id="news">
-    <div class="wrap">
-      <div class="sec-head"><h2>News</h2><span class="lbl">Current projects</span></div>
-      <div class="news">
-        <a href="https://www.thisdaylive.com/2026/10/09/i-have-the-looks-wit-and-drama-to-win-bbn-miracle-echeji/" target="_blank" rel="noopener">
-          <span class="lbl">ThisDay, 9 Oct 2026</span>
-          <b>&ldquo;I have the looks, wit and drama to win BBN&rdquo;</b>
-          <span class="lbl">Read</span></a>
-        <div class="slot"><span>Date</span><span>Your next project or announcement, posted from the admin.</span><span></span></div>
-        <div class="slot"><span>Date</span><span>Or your latest Instagram posts pulled in here automatically.</span><span></span></div>
+      <div class="acts">
+        <button class="btn btn-line" type="button" data-note="On the live site this downloads your résumé as a PDF.">Résumé (PDF)</button>
       </div>
     </div>
   </section>
 
-  <section class="sec" id="contact">
-    <div class="wrap">
-      <div class="sec-head"><h2>Contact and representation</h2></div>
+  <section class="sec" id="news" style="padding-top:0">
+    <div class="pad">
+      <h2>News</h2>
+      <ul class="news">
+        <li><a href="https://www.thisdaylive.com/2026/10/09/i-have-the-looks-wit-and-drama-to-win-bbn-miracle-echeji/" target="_blank" rel="noopener" style="display:contents">
+          <span class="lbl">ThisDay, 9 Oct 2026</span>
+          <b>&ldquo;I have the looks, wit and drama to win BBN&rdquo;</b>
+          <span class="lbl">Read</span></a></li>
+        <li><span class="lbl">Date</span><span class="soft">Your next project or announcement, posted from the admin.</span><span></span></li>
+        <li><span class="lbl">Date</span><span class="soft">Or your latest Instagram posts pulled in here.</span><span></span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="sec" id="contact" style="padding-top:0">
+    <div class="pad">
+      <h2>Booking</h2>
       <div class="contact">
-        <dl>
+        <div class="blocks">
           <div>
-            <dt class="lbl">Representation, sample</dt>
-            <dd><b>Ngozi Adeyemi-Clarke</b><br>Lantern Talent Management, Lagos<br>casting@lanterntalent.example</dd>
+            <span class="lbl">Bookings</span>
+            <a class="mailbig" href="#contact">bookings@miracleecheji.com</a>
+            <p class="soft" style="margin-top:8px">Placeholder address until the domain is registered.</p>
           </div>
           <div>
-            <dt class="lbl">Bookings</dt>
-            <dd><b>bookings@miracleecheji.com</b><br><span class="mut">Placeholder address until the domain is registered.</span></dd>
+            <span class="lbl">Representation, sample</span>
+            <b>Ngozi Adeyemi-Clarke</b>
+            <p class="soft">Lantern Talent Management, Lagos<br>casting@lanterntalent.example</p>
           </div>
           <div>
-            <dt class="lbl">Privacy</dt>
-            <dd class="mut">No personal phone number or home address appears anywhere on this site.</dd>
+            <span class="lbl">Privacy</span>
+            <p class="soft" style="margin-top:4px">No personal phone number or home address appears anywhere on this site.</p>
           </div>
           <div>
-            <dt class="lbl">Profiles</dt>
-            <dd>
-              <div class="social">
-                <a href="https://www.instagram.com/mimi_echeji/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-ig"/></svg></a>
-                <a href="https://www.youtube.com/@miracleecheji" target="_blank" rel="noopener" aria-label="YouTube"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-yt"/></svg></a>
-                <a href="https://www.facebook.com/miracle.echeji/" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-fb"/></svg></a>
-                <a class="txt" href="https://nollywire.com/names/miracle-echeji" target="_blank" rel="noopener">Nollywire</a>
-                <a class="txt" href="https://ng.linkedin.com/in/miracle-emmanuella-echeji-822371218" target="_blank" rel="noopener">LinkedIn</a>
-              </div>
-            </dd>
+            <span class="lbl">Follow</span>
+            <div class="social">
+              <a href="https://www.instagram.com/mimi_echeji/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-ig"/></svg></a>
+              <a href="https://www.youtube.com/@miracleecheji" target="_blank" rel="noopener" aria-label="YouTube"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-yt"/></svg></a>
+              <a href="https://www.facebook.com/miracle.echeji/" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-fb"/></svg></a>
+              <a class="txt" href="https://nollywire.com/names/miracle-echeji" target="_blank" rel="noopener">Nollywire</a>
+              <a class="txt" href="https://ng.linkedin.com/in/miracle-emmanuella-echeji-822371218" target="_blank" rel="noopener">LinkedIn</a>
+            </div>
           </div>
-        </dl>
+        </div>
         <form id="bookForm" novalidate>
           <div class="field"><label class="lbl" for="d-name">Your name</label><input id="d-name" name="name" type="text" autocomplete="name"></div>
           <div class="field"><label class="lbl" for="d-email">Email</label><input id="d-email" name="email" type="email" autocomplete="email"></div>
           <div class="field"><label class="lbl" for="d-type">Inquiry type</label>
             <select id="d-type" name="type"><option>Casting</option><option>Brand partnership</option><option>Press</option><option>Appearance or hosting</option></select></div>
           <div class="field"><label class="lbl" for="d-msg">Message</label><textarea id="d-msg" name="message"></textarea></div>
-          <div><button class="btn btn-solid" type="submit">Send inquiry</button></div>
+          <div><button class="btn" type="submit">Send inquiry</button></div>
           <p class="status" id="formNote" role="status"></p>
         </form>
       </div>
@@ -440,9 +416,9 @@
 </main>
 
 <footer>
-  <div class="wrap foot">
+  <div class="foot pad">
     <span>Miracle Echeji, 2026</span>
-    <span>Concept D, Casting. For review only.</span>
+    <span>Concept D, Daylight. For review only.</span>
   </div>
 </footer>
 
@@ -450,7 +426,7 @@
 
 <script>
 (function(){
-  // The player loads only when it is clicked, so the first screen stays fast.
+  // Players load only when clicked, so the page opens fast.
   [].forEach.call(document.querySelectorAll('[data-yt]'), function(btn){
     btn.addEventListener('click', function(){
       var id = btn.getAttribute('data-yt');
