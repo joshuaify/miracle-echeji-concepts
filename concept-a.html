@@ -78,6 +78,26 @@
   .frame.v3{background:
       radial-gradient(70% 70% at 50% 34%, rgba(214,120,110,.32), transparent 64%),
       linear-gradient(200deg,#3A1622 0%,#1F0C13 100%)}
+  /* A real photograph of her is never graded or tinted. Only stand-ins are. */
+  .frame.real img{filter:none}
+  .frame.real::before{display:none}
+  /* the work itself, in full colour against the wine ground */
+  .wrail{display:grid; grid-auto-flow:column; grid-auto-columns:minmax(270px,400px); gap:16px; overflow-x:auto;
+    scroll-snap-type:x proximity; padding-block:4px 14px; margin-inline:calc(var(--side) * -1);
+    padding-inline:var(--side); scrollbar-width:thin; margin-bottom:clamp(20px,3vw,36px)}
+  .wcard{scroll-snap-align:start; border:1px solid var(--line); background:rgba(0,0,0,.18); display:flex; flex-direction:column}
+  .wart{position:relative; display:block; width:100%; padding:0; border:0; background:#000; cursor:pointer; overflow:hidden}
+  .wart img{width:100%; aspect-ratio:16/9; object-fit:cover; display:block; transition:transform .45s cubic-bezier(.16,1,.3,1)}
+  .wcard:hover .wart img{transform:scale(1.04)}
+  .wart .go{position:absolute; left:12px; bottom:12px; width:44px; height:44px; border-radius:50%; background:var(--gold);
+    color:var(--wine); display:grid; place-items:center; transition:transform .25s}
+  .wart .go i{display:block; width:0; height:0; border-style:solid; border-width:7px 0 7px 12px;
+    border-color:transparent transparent transparent currentColor; margin-left:3px}
+  .wcard:hover .wart .go{transform:scale(1.12)}
+  .wart iframe{position:absolute; inset:0; width:100%; height:100%; border:0; z-index:5}
+  .wcard .wmeta{padding:12px 14px}
+  .wcard .wmeta b{display:block; font-family:var(--display); font-style:italic; font-weight:400; font-size:1.3rem; line-height:1.2}
+  .wcard .wmeta span{display:block; margin-top:4px; font-size:.82rem; color:var(--muted)}
   .frame img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:0;
     filter:grayscale(1) sepia(.4) contrast(1.06) brightness(.88)}
   .frame::before{z-index:1}
@@ -357,6 +377,32 @@
     <div class="wrap">
       <h2>Screen <em>credits</em></h2>
       <div class="sec-body rv">
+        <div class="wrail">
+          <article class="wcard">
+            <button class="wart" type="button" data-yt="Di6QSgFoRoI" aria-label="Play: Once Upon A Village">
+              <img src="assets/art-once-upon-a-village.jpg" alt="Key art for Once Upon A Village"><span class="go"><i></i></span>
+            </button>
+            <div class="wmeta"><b>Once Upon A Village</b><span>Series &middot; as Ozege &middot; Ruth Kadiri Films</span></div>
+          </article>
+          <article class="wcard">
+            <a class="wart" href="https://nollywire.com/films/compliance" target="_blank" rel="noopener" aria-label="Compliance on Nollywire">
+              <img src="assets/art-compliance.jpg" alt="Key art for Compliance, billing Miracle Echeji">
+            </a>
+            <div class="wmeta"><b>Compliance</b><span>2026 &middot; Drama &middot; with Van Vicker</span></div>
+          </article>
+          <article class="wcard">
+            <button class="wart" type="button" data-yt="n7SGWRA3HaI" aria-label="Play: Just A Friend">
+              <img src="assets/art-just-a-friend.jpg" alt="Key art for Just A Friend"><span class="go"><i></i></span>
+            </button>
+            <div class="wmeta"><b>Just A Friend</b><span>Ruth Kadiri Films &middot; with Maurice Sam</span></div>
+          </article>
+          <article class="wcard">
+            <a class="wart" href="https://nollywire.com/films/to-find-a-wife" target="_blank" rel="noopener" aria-label="To Find A Wife on Nollywire">
+              <img src="assets/art-to-find-a-wife.jpg" alt="Key art for To Find A Wife">
+            </a>
+            <div class="wmeta"><b>To Find A Wife</b><span>2026 &middot; Romance</span></div>
+          </article>
+        </div>
         <div class="cr-head"><span>Production</span><span>Role</span><span>With</span><span>Format</span></div>
         <div class="cr-row"><h3>Once Upon A Village</h3><span data-l="Role">Ozege</span><span data-l="With" class="tbc">To confirm</span><span data-l="Format" class="tbc">To confirm</span></div>
         <div class="cr-row"><h3>Just A Friend</h3><span data-l="Role" class="tbc">To confirm</span><span data-l="With">Maurice Sam</span><span data-l="Format">Film</span></div>
@@ -375,7 +421,7 @@
       <h2>The <em>portfolio</em></h2>
       <p class="sec-lead">Four images, each a different bookable look. A short set gets looked at. A long one gets skipped.</p>
       <div class="sec-body folio rv">
-        <figure class="fa"><div class="frame" role="img" aria-label="Stand-in photograph"><img src="assets/look-commercial.jpg" alt=""></div><figcaption>Headshot, commercial look</figcaption></figure>
+        <figure class="fa"><div class="frame real" role="img" aria-label="Miracle Echeji in character in Compliance"><img src="assets/still-compliance.jpg" alt="" style="object-position:50% 12%"></div><figcaption>Compliance, a real still</figcaption></figure>
         <figure class="fb"><div class="frame v2" role="img" aria-label="Stand-in photograph"><img src="assets/look-warm.jpg" alt=""></div><figcaption>Headshot, dramatic look</figcaption></figure>
         <figure class="fc"><div class="frame v3" role="img" aria-label="Stand-in photograph"><img src="assets/look-presenter.jpg" alt=""></div><figcaption>Editorial</figcaption></figure>
         <figure class="fd"><div class="frame v2" role="img" aria-label="Stand-in photograph"><img src="assets/still-air.jpg" alt=""></div><figcaption>Production still</figcaption></figure>
